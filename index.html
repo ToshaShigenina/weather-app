@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRE.AX Марафон</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <div class="App">
+      <section class="sidebar">
+        <aside class="search">
+          <button
+            class="btn-close btn search__btn"
+            id="close-search"
+            type="button"
+          ></button>
+          <form action="#" class="serch__form">
+            <input type="text" value="Москва" class="search__input" />
+            <button type="submit" class="search__submit btn">Найти</button>
+          </form>
+        </aside>
+        <div class="sidebar__container">
+          <button class="sidebar__btn btn" type="button" id="open-search">
+            Поиск города
+          </button>
+          <div class="condition">
+            <img
+              src="./img/weather/snow.png"
+              alt="Снег"
+              class="condition__icon icon"
+            />
+            <span class="condition__temp">1&nbsp;<span>°C</span></span>
+            <span class="condition__fallout">Cнег</span>
+            <span class="condition__feel">Ощущается как -3 °C</span>
+          </div>
+          <div class="location">
+            <div class="location__day">
+              <span>Сегодня</span>
+              <span>Вс, 13 мар</span>
+            </div>
+            <div class="location__position">
+              <svg>
+                <use xlink:href="./img/sprite.svg#point"></use>
+              </svg>
+              Москва
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="forecast">
+        <div class="container">
+          <h2 class="heading">Прогноз</h2>
+          <div class="label">
+            <button class="label__item active" id="day-of-week">
+              на неделю
+            </button>
+            <button class="label__item" id="hour-of-day">почасовой</button>
+          </div>
+          <div class="tabs">
+            <div class="tabs__item active forecast__days" id="for-days">
+              <div class="tabs__container">
+                <div class="day">
+                  <h3 class="day__name">Завтра</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+                <div class="day">
+                  <h3 class="day__name">Пн, 15 мар</h3>
+                  <img
+                    src="./img/weather/rain.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+                <div class="day">
+                  <h3 class="day__name">Вт, 16 мар</h3>
+                  <img
+                    src="./img/weather/rain.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+                <div class="day">
+                  <h3 class="day__name">Ср, 17 мар</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+                <div class="day">
+                  <h3 class="day__name">Чт, 18 мар</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+                <div class="day">
+                  <h3 class="day__name">Пт, 19 мар</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+                <div class="day">
+                  <h3 class="day__name">Сб, 20 мар</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="day__fallout"
+                  />
+                  <div class="day__term">
+                    <span class="day__term-max">10°C</span>
+                    <span class="day__term-min">4°C</span>
+                  </div>
+                </div>
+              </div>
+              <button class="prev-btn tabs__btn" disabled></button>
+              <button class="next-btn tabs__btn"></button>
+            </div>
+            <div class="tabs__item forecast__hours" id="for-hours">
+              <div class="tabs__container">
+                <div class="time">
+                  <h3 class="time__name">15:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">16:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">17:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">18:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">19:00</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">20:00</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">21:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">22:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">23:00</h3>
+                  <img
+                    src="./img/weather/thunder.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">0:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">01:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+                <div class="time">
+                  <h3 class="time__name">02:00</h3>
+                  <img
+                    src="./img/weather/fog.png"
+                    alt=""
+                    class="time__fallout"
+                  />
+                  <div class="day__term">10°C</div>
+                </div>
+              </div>
+              <button class="prev-btn tabs__btn" disabled></button>
+              <button class="next-btn tabs__btn"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="today">
+        <div class="container">
+          <h2 class="heading">Подробно на сегодня</h2>
+          <div class="today__data wind">
+            <h3 class="today__name">Скорость ветра</h3>
+            <span class="today__value">7 <span>м/с</span></span>
+            <div class="wind__value">
+              <div class="wind__circle">
+                <svg>
+                  <use xlink:href="./img/sprite.svg#arrow"></use>
+                </svg>
+              </div>
+              СЗ
+            </div>
+          </div>
+          <div class="today__data">
+            <h3 class="today__name">Влажность</h3>
+            <span class="today__value">84 <span>%</span></span>
+          </div>
+          <div class="today__data">
+            <h3 class="today__name">Видимость</h3>
+            <span class="today__value">6.2 <span>км</span></span>
+          </div>
+          <div class="today__data press">
+            <h3 class="today__name">Давление</h3>
+            <span class="today__value"
+              >742&nbsp;<span>мм&nbsp;рт.&nbsp;ст.</span></span
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>

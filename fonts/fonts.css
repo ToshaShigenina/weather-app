@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("Rubik-Bold.eot");
+  src: local("Rubik Bold"), local("Rubik-Bold"),
+    url("Rubik-Bold.eot?#iefix") format("embedded-opentype"),
+    url("Rubik-Bold.woff2") format("woff2"),
+    url("Rubik-Bold.woff") format("woff"),
+    url("Rubik-Bold.ttf") format("truetype"),
+    url("Rubik-Bold.svg#Rubik-Bold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("Rubik-Regular.eot");
+  src: local("Rubik"), local("Rubik-Regular"),
+    url("Rubik-Regular.eot?#iefix") format("embedded-opentype"),
+    url("Rubik-Regular.woff2") format("woff2"),
+    url("Rubik-Regular.woff") format("woff"),
+    url("Rubik-Regular.ttf") format("truetype"),
+    url("Rubik-Regular.svg#Rubik-Regular") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("Rubik-Black.eot");
+  src: local("Rubik Black"), local("Rubik-Black"),
+    url("Rubik-Black.eot?#iefix") format("embedded-opentype"),
+    url("Rubik-Black.woff2") format("woff2"),
+    url("Rubik-Black.woff") format("woff"),
+    url("Rubik-Black.ttf") format("truetype"),
+    url("Rubik-Black.svg#Rubik-Black") format("svg");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
