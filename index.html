@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <div class="App">
+    <main class="App">
       <section class="sidebar">
         <aside class="search sidebar__search">
           <button
@@ -32,7 +32,7 @@
               alt="Снег"
               class="condition__icon icon"
             />
-            <span class="condition__temp">1&nbsp;<span>°C</span></span>
+            <h1 class="condition__temp">1&nbsp;<small>°C</small></h1>
             <span class="condition__fallout">Cнег</span>
             <span class="condition__feel">Ощущается как -3 °C</span>
           </div>
@@ -152,8 +152,13 @@
                   </div>
                 </div>
               </div>
-              <button class="btn_prev tabs__btn" disabled></button>
-              <button class="btn_next tabs__btn"></button>
+              <button
+                class="btn_slider tabs__btn tabs__btn-prev"
+                disabled
+              ></button>
+              <button
+                class="btn_slider btn_next tabs__btn tabs__btn-next"
+              ></button>
             </div>
             <div class="tabs__item forecast__tabs" id="for-hours">
               <div class="tabs__container">
@@ -314,7 +319,7 @@
           </div>
         </div>
       </section>
-    </div>
+    </main>
 
     <script src="./scripts/script.js"></script>
   </body>
