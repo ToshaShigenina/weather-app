@@ -18,7 +18,10 @@
           <form action="#" class="serch__form">
             <input type="text" value="Москва" class="input search__input" />
             <button type="submit" class="search__submit btn">Найти</button>
-            <p class="search__error">Упс! Город не найден, попробуйте другой</p>
+            <p class="search__error">
+              Упс! Город не найден,<br />
+              попробуйте другой
+            </p>
           </form>
         </aside>
 
@@ -41,7 +44,7 @@
             <span class="date__item">Вс, 13 мар</span>
           </div>
           <div class="location sidebar__location">
-            <svg class="icon location__icon">
+            <svg class="location__icon">
               <use xlink:href="./img/sprite.svg#point"></use>
             </svg>
             Москва
@@ -153,7 +156,7 @@
                 </div>
               </div>
               <button
-                class="btn_slider tabs__btn tabs__btn-prev"
+                class="btn_slider btn_prev tabs__btn tabs__btn-prev"
                 disabled
               ></button>
               <button
@@ -282,8 +285,13 @@
                   </div>
                 </div>
               </div>
-              <button class="btn_prev tabs__btn" disabled></button>
-              <button class="btn_next tabs__btn"></button>
+              <button
+                class="btn_slider btn_prev tabs__btn tabs__btn-prev"
+                disabled
+              ></button>
+              <button
+                class="btn_slider btn_next tabs__btn tabs__btn-next"
+              ></button>
             </div>
           </div>
         </div>
@@ -293,7 +301,7 @@
         <div class="container">
           <h2 class="heading">Подробно на сегодня</h2>
 
-          <div class="card card_big wind">
+          <div class="card card_big wind today__card">
             <h3 class="card__name">Скорость ветра</h3>
             <span class="card__value">7 <small>м/с</small></span>
             <div class="wind__value">
@@ -303,15 +311,15 @@
               <span>СЗ</span>
             </div>
           </div>
-          <div class="card card_big humidity">
+          <div class="card card_big humidity today__card">
             <h3 class="card__name">Влажность</h3>
             <span class="card__value">84 <small>%</small></span>
           </div>
-          <div class="card card_big visibility">
+          <div class="card card_big visibility today__card">
             <h3 class="card__name">Видимость</h3>
             <span class="card__value">6.2 <small>км</small></span>
           </div>
-          <div class="card card_big pressure">
+          <div class="card card_big pressure today__card">
             <h3 class="card__name">Давление</h3>
             <span class="card__value"
               >742&nbsp;<small>мм&nbsp;рт.&nbsp;ст.</small></span
