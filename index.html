@@ -50,9 +50,11 @@
               alt="Снег"
               class="condition__icon icon"
             />
-            <h1 class="condition__temp">1&nbsp;<small>°C</small></h1>
+            <h1 class="condition__temp">
+              <span>1</span>&nbsp;<small>°C</small>
+            </h1>
             <span class="condition__fallout">Cнег</span>
-            <span class="condition__feel">Ощущается как -3 °C</span>
+            <span class="condition__feel">Ощущается как <span>-3</span>°C</span>
           </div>
           <div class="date sidebar__date">
             <span class="date__item">Сегодня</span>
@@ -62,7 +64,7 @@
             <svg class="location__icon">
               <use xlink:href="./img/sprite.svg#point"></use>
             </svg>
-            Москва
+            <span>Москва</span>
           </div>
         </div>
       </section>
@@ -72,12 +74,18 @@
           <h2 class="heading">Прогноз</h2>
           <ul class="label forecast__label">
             <li class="label__item">
-              <button class="label__btn active" id="day-of-week">
+              <button
+                class="label__btn active"
+                id="day-of-week"
+                data-for="for-days"
+              >
                 на неделю
               </button>
             </li>
             <li class="label__item">
-              <button class="label__btn" id="hour-of-day">почасовой</button>
+              <button class="label__btn" id="hour-of-day" data-for="for-hours">
+                почасовой
+              </button>
             </li>
           </ul>
           <div class="tabs forecast__tabs">
@@ -178,7 +186,7 @@
                 class="btn_slider btn_next tabs__btn tabs__btn-next"
               ></button>
             </div>
-            <div class="tabs__item forecast__tabs" id="for-hours">
+            <div class="tabs__item" id="for-hours">
               <div class="tabs__container">
                 <div class="card card_small tabs__card">
                   <h3 class="card__name">15:00</h3>
@@ -318,7 +326,7 @@
 
           <div class="card card_big wind today__card">
             <h3 class="card__name">Скорость ветра</h3>
-            <span class="card__value">7 <small>м/с</small></span>
+            <span class="card__value"><span>7</span> <small>м/с</small></span>
             <div class="wind__value">
               <svg class="icon wind__icon">
                 <use xlink:href="./img/sprite.svg#arrow"></use>
@@ -328,16 +336,16 @@
           </div>
           <div class="card card_big humidity today__card">
             <h3 class="card__name">Влажность</h3>
-            <span class="card__value">84 <small>%</small></span>
+            <span class="card__value"><span>84</span> <small>%</small></span>
           </div>
           <div class="card card_big visibility today__card">
             <h3 class="card__name">Видимость</h3>
-            <span class="card__value">6.2 <small>км</small></span>
+            <span class="card__value"><span>6.2</span> <small>км</small></span>
           </div>
           <div class="card card_big pressure today__card">
             <h3 class="card__name">Давление</h3>
             <span class="card__value"
-              >742&nbsp;<small>мм&nbsp;рт.&nbsp;ст.</small></span
+              ><span>742</span>&nbsp;<small>мм&nbsp;рт.&nbsp;ст.</small></span
             >
           </div>
         </div>
