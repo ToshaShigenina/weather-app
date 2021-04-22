@@ -9,5 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
       searchElem.classList.remove('open');
     }
   };
+  const themeChange = e => {
+    const target = e.target;
+    if (target.closest('.theme__checkbox')) {
+      document.body.classList.toggle('theme-dark');
+    }
+  };
+  document.body.addEventListener('change', themeChange);
   document.body.addEventListener('click', menuToggle);
 });
