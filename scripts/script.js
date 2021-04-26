@@ -107,7 +107,7 @@ const renderCurrent = (data) => {
   const visible = document.querySelector('.visibility .card__value span');
   const pressure = document.querySelector('.pressure .card__value span');
 
-  const wind = (wind_deg, wind, arrow) => {
+  const createWind = (wind_deg, wind, arrow) => {
     if (wind_deg >= 345 || wind_deg <= 15) {
       arrow.style.transform = `rotateZ(${wind_deg}deg)`;
       wind.textContent = directions[0]
@@ -149,11 +149,11 @@ const renderCurrent = (data) => {
   city.textContent = data.city;
   desc.textContent = data.current.description;
   feel.textContent = Math.floor(data.current.feel);
-  speed.textContent = data.current.wind_speed;
+  speed.textContent = Math.floor(data.current.wind_speed);
   humidity.textContent = data.current.humidity;
   visible.textContent = Math.floor(data.current.visibility / 1000);
   pressure.textContent = Math.floor((data.current.pressure * 100) / 133.3);
-  wind(data.current.wind_deg, direction, arrow);
+  createWind(data.current.wind_deg, direction, arrow);
 };
 
 const renderCards = (data) => {
@@ -254,7 +254,7 @@ const initSlider = () => {
     };
     const nextSlide = (container) => {
       if((index + 1) * 134 <= width) {
-        index+=1;
+        index++;
         container.style.transform = `translateX(-${index * 134}px)`;
         if(index * 134 === width) nextBtn.disabled = true;
       }

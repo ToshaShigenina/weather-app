@@ -369,15 +369,6 @@ body.theme-dark {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  background-image: url("../img/weather/bg/bg-cloud.png");
-  background-repeat: no-repeat;
-  background-size: 140%;
-  background-position: top center;
-  background-blend-mode: difference;
-}
-
-.theme-dark .condition {
-  background-blend-mode: soft-light;
 }
 
 .condition__icon {
@@ -576,12 +567,6 @@ body.theme-dark {
   margin-right: 10px;
 }
 
-@media screen and (min-width: 450px) and (max-width: 631px) {
-  .condition {
-    background-size: 100%;
-  }
-}
-
 @media screen and (min-width: 632px) {
   .App {
     margin-left: 40%;
@@ -605,11 +590,6 @@ body.theme-dark {
 
   .sidebar__container {
     min-height: 100vh;
-  }
-
-  .condition {
-    background-size: 150%;
-    background-position: center 30%;
   }
 
   .heading {
