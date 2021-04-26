@@ -1,7 +1,18 @@
 const data = {};
+const theme = true;
 
+const getError = () => {
+  const errMsg = document.querySelector('.search__error');
+  errMsg.style.display = 'block';
+};
+
+const removeError = () => {
+  const errMsg = document.querySelector('.search__error');
+  errMsg.removeAttribute('style');
+};
 
 const getCity = async (city) => {
+  removeError();
   if(city.length !== 0) {
     let response = await fetch(`https://nominatim.openstreetmap.org/search?q=${city}&format=json&addressdetails=1&limit=1`);
     if(response.ok && response) {
@@ -10,11 +21,11 @@ const getCity = async (city) => {
         return result[0];
       }
       else {
-        renderError(document.querySelector('.search__form'));
+        getError();
         return false;
       }
     } else {
-      renderError(document.querySelector('.search__form'));
+      getError();
       return false;
     }
   } else return false;
@@ -175,7 +186,6 @@ const getData = e => {
   const city = document.querySelector('.search__input').value.trim();
   getCity(city)
     .then(result => {
-      console.log(result)
       if(result) return getWeather(result, '7375fdc7138355640ba403df8e115fb7')
       return false;
     })
@@ -184,7 +194,6 @@ const getData = e => {
         data.current = generateCurrent(result.current);
         data.daily = generateDaily(result.daily);
         data.hourly = generateHourly(result.hourly);
-        console.log(data);
         return data;
       } else return false
     })
@@ -224,6 +233,58 @@ const searchToggle = e => {
   }
 };
 
+const initSlider = () => {
+  const sliderElem = document.querySelectorAll('.slider');
+
+  const swipeSlider = (slider) => {
+    const nextBtn = slider.querySelector('.btn_next');
+    const prevBtn = slider.querySelector('.btn_prev');
+    const slidesContainer = slider.querySelector('.slider__container');
+    const slides = slider.querySelectorAll('.card');
+    let width = (slides.length * 110 + (slides.length - 1) * 24) - slidesContainer.clientWidth;
+    let index = 0;
+    
+    const observeSlider = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          width = (slides.length * 110 + (slides.length - 1) * 24) - entry.target.clientWidth;
+          observer.unobserve(entry.target);
+        }
+      })
+    };
+    const nextSlide = (container) => {
+      if((index + 1) * 134 <= width) {
+        index+=1;
+        container.style.transform = `translateX(-${index * 134}px)`;
+        if(index * 134 === width) nextBtn.disabled = true;
+      }
+      prevBtn.disabled = false;
+    };
+    const prevSlide = (container) => {
+      if((index - 1) * 134 >= 0) {
+        index--;
+        container.style.transform = `translateX(-${index * 134}px)`;
+        if(index * 134 === 0) prevBtn.disabled = true;
+      }
+      nextBtn.disabled = false;
+    };
+
+    const observer = new IntersectionObserver(observeSlider);
+
+    observer.observe(slidesContainer);
+    nextBtn.addEventListener('click', () => {
+      nextSlide(slidesContainer);
+    });
+    prevBtn.addEventListener('click', () => {
+      prevSlide(slidesContainer);
+    });
+  };
+  
+  sliderElem.forEach(item => {
+    swipeSlider(item);
+  })
+};
+
 const themeChange = e => {
   const target = e.target;
   if (target.closest('.theme__checkbox')) {
@@ -234,6 +295,7 @@ const themeChange = e => {
 const init = () => {
   document.addEventListener('DOMContentLoaded', () => {
     getData();
+    initSlider();
     document.addEventListener('click', switchTabs);
     document.addEventListener('submit', getData);
     document.addEventListener('change', themeChange);
