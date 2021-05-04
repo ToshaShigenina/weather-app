@@ -1,9 +1,18 @@
 const data = {};
-const theme = true;
+let theme;
+
+const getLocalData = () => {
+  theme = localStorage.getItem('theme') !== null ? +localStorage.getItem('theme') : 1;
+};
+
+const setLocalData = () => {
+  localStorage.setItem('theme', theme);
+};
 
 const getError = () => {
   const errMsg = document.querySelector('.search__error');
   errMsg.style.display = 'block';
+  return false;
 };
 
 const removeError = () => {
@@ -21,12 +30,10 @@ const getCity = async (city) => {
         return result[0];
       }
       else {
-        getError();
-        return false;
+        return getError();
       }
     } else {
-      getError();
-      return false;
+      return getError();
     }
   } else return false;
 };
@@ -38,13 +45,13 @@ const getWeather = async (location, key) => {
     data.city = location.address.city;
     return result;
   } else {
-    console.log('error');
+    throw new Error();
   }
 };
 
 const generateCurrent = (current) => {
   return {
-    date: new Date(+`${current.dt}000`),
+    date: new Date(current.dt * 1000),
     temp: current.temp,
     feel: current.feels_like,
     description: current.weather[0].description,
@@ -61,7 +68,7 @@ const generateDaily = (daily) => {
   const result = [];
   daily.slice(0,7).forEach(item => {
     result.push({
-      date: new Date(+`${item.dt}000`),
+      date: new Date(item.dt * 1000),
       tempMax: item.temp.max,
       tempMin: item.temp.min,
       icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
@@ -74,7 +81,7 @@ const generateHourly = (hourly) => {
   const result = [];
   hourly.slice(0,12).forEach(item => {
     result.push({
-      time: new Date(+`${item.dt}000`).getHours(),
+      time: new Date(item.dt * 1000).getHours(),
       temp: item.temp,
       icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
     });
@@ -286,14 +293,33 @@ const initSlider = () => {
 };
 
 const themeChange = e => {
-  const target = e.target;
-  if (target.closest('.theme__checkbox')) {
-    document.body.classList.toggle('theme-dark');
+  const switchEl = document.querySelector('.theme__checkbox');
+  let target;
+  const loadTheme = (theme, target) => {
+    if(theme) {
+      target.checked = false;
+      document.body.classList.remove('theme-dark');
+    } else {
+      target.checked = true;
+      document.body.classList.add('theme-dark');
+    }
+    setLocalData();
+  };
+  if(e) {
+    target = e.target;
+    if (target === switchEl) {
+      theme = theme === 1 ? 0 : 1;
+      loadTheme(theme, switchEl);
+    }
+  } else {
+    loadTheme(theme, switchEl);
   }
 };
 
 const init = () => {
   document.addEventListener('DOMContentLoaded', () => {
+    getLocalData();
+    themeChange();
     getData();
     initSlider();
     document.addEventListener('click', switchTabs);
