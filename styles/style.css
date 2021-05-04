@@ -22,6 +22,24 @@
   --shadow: 0px 7px 12px rgba(0, 0, 0, 0.05);
 }
 
+* {
+  --color-sidebar: var(--color-main-dark);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sidebar) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-sidebar);
+  border-radius: 6px;
+  border: none;
+}
+
 html,
 body {
   width: 100%;
@@ -37,6 +55,8 @@ body {
   font-size: 18px;
   line-height: 1.2;
   background-color: var(--color-bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color) transparent;
 }
 
 body.theme-dark {
@@ -391,6 +411,7 @@ body.theme-dark {
 
 .condition__fallout {
   margin-top: 40px;
+  padding: 0 30px;
   font-size: 36px;
   text-align: center;
   font-weight: 700;
@@ -567,14 +588,21 @@ body.theme-dark {
   margin-right: 10px;
 }
 
-@media screen and (min-width: 632px) {
+@media screen and (min-width: 700px) and (max-width: 766px) {
+  .sidebar__btn {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (min-width: 700px) {
   .App {
-    margin-left: 40%;
-    width: 60%;
+    margin-left: 45%;
+    width: 55%;
   }
 
   .search {
-    width: 40%;
+    width: 45%;
   }
 
   .sidebar {
@@ -582,7 +610,7 @@ body.theme-dark {
     z-index: 100;
     top: 0;
     left: 0;
-    width: 40%;
+    width: 45%;
     height: 100%;
     overflow-y: scroll;
     flex-grow: 1;
@@ -631,12 +659,6 @@ body.theme-dark {
 
   .today__card {
     width: 100%;
-  }
-}
-
-@media screen and (min-width: 632px) and (max-width: 833px) {
-  .theme {
-    top: 110px;
   }
 }
 
