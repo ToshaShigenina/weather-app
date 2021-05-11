@@ -20,6 +20,32 @@ const removeError = () => {
   errMsg.removeAttribute('style');
 };
 
+const removeLoader = (parent) => {
+  const loader = parent.querySelector('.loader');
+  if (loader) {
+    loader.classList.add('close');
+    parent.classList.remove('load');
+    setTimeout(() => {
+      loader.remove();
+    }, 500);
+  }
+};
+
+const addLoader = (parent) => {
+  const loader = `
+    <div class="loader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  `;
+  parent.classList.add('load');
+  parent.insertAdjacentHTML('beforeend', loader);
+};
+
 const getCity = async (city) => {
   removeError();
   if(city.length !== 0) {
@@ -66,7 +92,7 @@ const generateCurrent = (current) => {
 
 const generateDaily = (daily) => {
   const result = [];
-  daily.slice(0,7).forEach(item => {
+  daily.slice(1).forEach(item => {
     result.push({
       date: new Date(item.dt * 1000),
       tempMax: item.temp.max,
@@ -90,12 +116,13 @@ const generateHourly = (hourly) => {
 };
 
 const dateformat = (date) => {
+  const now = new Date();
   const formatter = new Intl.DateTimeFormat('ru', {
     weekday: "short",
     month: "short",
     day: "numeric"
   });
-  return formatter.format(date);
+  return (date.getUTCDate() === now.getUTCDate()+1) ? 'Завтра' : formatter.format(date);
 };
 
 const renderCurrent = (data) => {
@@ -191,6 +218,10 @@ const renderCards = (data) => {
 const getData = e => {
   if(e) e.preventDefault();
   const city = document.querySelector('.search__input').value.trim();
+  const form = document.querySelector('.serch__form');
+  const cards = document.querySelectorAll('.card');
+  addLoader(form);
+  cards.forEach(item => addLoader(item));
   getCity(city)
     .then(result => {
       if(result) return getWeather(result, '7375fdc7138355640ba403df8e115fb7')
@@ -208,6 +239,8 @@ const getData = e => {
       if(result) {
         renderCards(result);
         renderCurrent(result);
+        removeLoader(form);
+        cards.forEach(item => removeLoader(item));
       }
     });
 };

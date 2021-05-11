@@ -81,18 +81,16 @@ body.theme-dark {
 
 /* loader */
 .loader {
-  display: none;
+  display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
-.loader.load {
-  display: flex;
-}
-
-.search .loader {
-  margin-top: 30px;
+.loader.close {
+  opacity: 0 !important;
 }
 
 .lds-ellipsis {
@@ -236,6 +234,7 @@ body.theme-dark {
 
 .card {
   --color-bg: var(--color-white);
+  position: relative;
   background-color: var(--color-bg);
   border-radius: 8px;
   padding: 16px 0;
@@ -243,6 +242,7 @@ body.theme-dark {
   width: 100%;
   font-size: 14px;
   text-align: center;
+  transition: opacity 0.5s;
 }
 
 .card__name {
@@ -278,17 +278,38 @@ body.theme-dark {
 
 .card_small {
   max-width: 110px;
+  min-height: 174px;
 }
 
 .card_big {
   padding: 20px 4px;
   border-radius: 10px;
   max-width: 320px;
+  min-height: 137px;
 }
 
 .card_big .card__name {
   font-weight: 400;
   font-size: 18px;
+}
+
+.card .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 1;
+}
+
+.card_big .loader {
+  padding-top: 40px;
+}
+
+.card_small.load *:not(.loader),
+.card_big.load *:not(.loader):not(.card__name) {
+  opacity: 0;
 }
 
 /* sidebar */
@@ -341,6 +362,10 @@ body.theme-dark {
   transform: translateX(-100%);
   transition: transform 0.5s;
   z-index: 100;
+}
+
+.search .loader {
+  margin-top: 30px;
 }
 
 .serch__form {
@@ -489,6 +514,10 @@ body.theme-dark {
   text-align: center;
   font-weight: 700;
   line-height: 1;
+}
+
+.condition__fallout::first-letter {
+  text-transform: uppercase;
 }
 
 .condition__feel {
@@ -647,6 +676,10 @@ body.theme-dark {
 }
 
 /* wind */
+
+.wind {
+  min-height: 177px;
+}
 
 .wind__value {
   display: flex;
