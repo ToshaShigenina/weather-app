@@ -9,7 +9,7 @@ const setLocalData = () => {
   localStorage.setItem('theme', theme);
 };
 
-const getError = () => {
+const addError = () => {
   const errMsg = document.querySelector('.search__error');
   errMsg.style.display = 'block';
   return false;
@@ -53,13 +53,14 @@ const getCity = async (city) => {
     if(response.ok && response) {
       let result = await response.json();
       if(result.length > 0) {
+        console.log(result);
         return result[0];
       }
       else {
-        return getError();
+        return addError();
       }
     } else {
-      return getError();
+      return addError();
     }
   } else return false;
 };
@@ -234,6 +235,7 @@ const getData = e => {
         data.current = generateCurrent(result.current);
         data.daily = generateDaily(result.daily);
         data.hourly = generateHourly(result.hourly);
+        console.log(data);
         return data;
       } else return false
     })
