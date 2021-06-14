@@ -220,7 +220,9 @@ const getData = e => {
   const city = document.querySelector('.search__input').value.trim();
   const form = document.querySelector('.serch__form');
   const cards = document.querySelectorAll('.card');
+  const sidebar = document.querySelector('.sidebar__container');
   addLoader(form);
+  addLoader(sidebar);
   cards.forEach(item => addLoader(item));
   getCity(city)
     .then(result => {
@@ -240,6 +242,7 @@ const getData = e => {
         renderCards(result);
         renderCurrent(result);
         removeLoader(form);
+        removeLoader(sidebar);
         cards.forEach(item => removeLoader(item));
       }
     });
