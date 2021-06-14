@@ -1,12 +1,18 @@
-const data = {};
-let theme;
+'use strict';
 
-const getLocalData = () => {
-  theme = localStorage.getItem('theme') !== null ? +localStorage.getItem('theme') : 1;
+const data = {};
+const local = {
+  theme: null,
+  history: []
 };
 
-const setLocalData = () => {
-  localStorage.setItem('theme', theme);
+const getLocalData = () => {
+  local.theme = localStorage.getItem('theme') !== null ? +localStorage.getItem('theme') : 1;
+  local.history = localStorage.getItem('history') !== null ? localStorage.getItem('history').split(',') : [];
+};
+
+const setLocalData = (key, data) => {
+  localStorage.setItem(key, data);
 };
 
 const addError = () => {
@@ -42,8 +48,10 @@ const addLoader = (parent) => {
       </div>
     </div>
   `;
-  parent.classList.add('load');
-  parent.insertAdjacentHTML('beforeend', loader);
+  if(!parent.classList.contains('load')) {
+    parent.classList.add('load');
+    parent.insertAdjacentHTML('beforeend', loader);
+  }
 };
 
 const getCity = async (city) => {
@@ -52,14 +60,18 @@ const getCity = async (city) => {
     let response = await fetch(`https://nominatim.openstreetmap.org/search?q=${city}&format=json&addressdetails=1&limit=1`);
     if(response.ok && response) {
       let result = await response.json();
-      if(result.length > 0) {
-        console.log(result);
+      if(result.length > 0 && result[0].address.city !== undefined) {
+        saveHistory(result[0].address.city);
         return result[0];
       }
       else {
+        const form = document.querySelector('.serch__form');
+        removeLoader(form);
         return addError();
       }
     } else {
+      const form = document.querySelector('.serch__form');
+      removeLoader(form);
       return addError();
     }
   } else return false;
@@ -235,7 +247,6 @@ const getData = e => {
         data.current = generateCurrent(result.current);
         data.daily = generateDaily(result.daily);
         data.hourly = generateHourly(result.hourly);
-        console.log(data);
         return data;
       } else return false
     })
@@ -248,6 +259,40 @@ const getData = e => {
         cards.forEach(item => removeLoader(item));
       }
     });
+};
+
+const printHistoryItem = cities => {
+  const history = document.getElementById('history');
+  history.innerHTML = '';
+  cities.forEach(city => {
+    const item = `
+      <li class="history__item">${city}</li>
+    `;
+    history.insertAdjacentHTML('afterbegin', item);
+  });
+};
+
+const saveHistory = city => {
+  if(local.history.length === 0) local.history.push(city);
+  else if(local.history[local.history.length-1] !== city) {
+    if(local.history.length === 5) local.history.shift();
+    local.history.push(city);
+  }
+  printHistoryItem(local.history);
+  setLocalData('history', local.history.join());
+};
+
+const loadHistory = cities => {
+  const input = document.querySelector('.search__input');
+  if(cities.length > 0) input.value = cities[cities.length-1];
+};
+
+const loadCityFromHistory = e => {
+  let target = e.target.closest('.history__item');
+  if(target) {
+    document.querySelector('.search__input').value = target.textContent;
+    getData();
+  }
 };
 
 const switchTabs = e => {
@@ -341,22 +386,24 @@ const themeChange = e => {
       target.checked = true;
       document.body.classList.add('theme-dark');
     }
-    setLocalData();
+    setLocalData('theme', theme);
   };
   if(e) {
     target = e.target;
     if (target === switchEl) {
-      theme = theme === 1 ? 0 : 1;
-      loadTheme(theme, switchEl);
+      local.theme = local.theme === 1 ? 0 : 1;
+      loadTheme(local.theme, switchEl);
     }
   } else {
-    loadTheme(theme, switchEl);
+    loadTheme(local.theme, switchEl);
   }
 };
 
 const init = () => {
   document.addEventListener('DOMContentLoaded', () => {
+    const history = document.getElementById('history');
     getLocalData();
+    loadHistory(local.history);
     themeChange();
     getData();
     initSlider();
@@ -364,6 +411,7 @@ const init = () => {
     document.addEventListener('submit', getData);
     document.addEventListener('change', themeChange);
     document.addEventListener('click', searchToggle);
+    history.addEventListener('click', loadCityFromHistory);
   });
 }
 
