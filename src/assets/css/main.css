@@ -1,0 +1,102 @@
+@import url("./fonts.css");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-main-dark: #48484a;
+  --color-main-light: #acacac;
+  --color-main-bg: #e5e5e5;
+  --color-white: #fff;
+  --color-accent: #ec6e4d;
+  --color-error: #f18c72;
+  --color-switch: #e6e6e6;
+  --color-theme-dark-main: #212331;
+  --font: "Rubik", "Tahoma", "Arial", sans-serif;
+  --shadow: 0px 7px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  --color-sidebar: var(--color-main-dark);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sidebar) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-sidebar);
+  border-radius: 6px;
+  border: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  --color-bg: var(--color-main-bg);
+  --color: var(--color-main-dark);
+  min-height: 100vh;
+  color: var(--color);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.2;
+  background-color: var(--color-bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color) transparent;
+}
+
+body.theme-dark {
+  --color-main-dark: #e6e6e6;
+  --color-main-bg: #100e1c;
+  --color-white: #212331;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    flex-direction: row;
+  }
+
+  .content {
+    width: 55vw;
+    margin-left: 45vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .content {
+    width: 66vw;
+    margin-left: 34vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .content {
+    width: 68vw;
+    margin-left: 32vw;
+  }
+}

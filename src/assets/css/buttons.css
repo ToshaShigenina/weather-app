@@ -1,0 +1,44 @@
+.btn {
+    --color-bg: var(--color-white);
+    --color-border: var(--color-main-light);
+    --color: var(--color-main-dark);
+    --radius: 10px;
+    --border-width: 2px;
+    padding: 16px 30px;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-bg);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color);
+}
+
+.btn_close {
+    --color: var(--color-main-dark);
+    display: block;
+    position: relative;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.btn_close::before,
+.btn_close::after {
+    content: "";
+    position: absolute;
+    width: 36px;
+    height: 4px;
+    background-color: var(--color);
+    top: 50%;
+    left: 50%;
+}
+
+.btn_close::before {
+    transform: translate(-50%, -50%) rotateZ(45deg);
+}
+
+.btn_close::after {
+    transform: translate(-50%, -50%) rotateZ(-45deg);
+}
