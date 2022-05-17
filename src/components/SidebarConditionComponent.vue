@@ -13,10 +13,10 @@
     >
 
     <h1 class="condition__temp">
-      {{ Math.floor(current.temp) }}&nbsp;<small>°C</small>
+      {{ current.temp }}&nbsp;<small>°C</small>
     </h1>
-    <span class="condition__fallout">{{ current.description || 'jhgjhgf hgfjh jhgjh jhgjk jhbjh' }}</span>
-    <span class="condition__feel">Ощущается как {{ Math.floor(current.feel) }}°C</span>
+    <span class="condition__fallout">{{ current.description }}</span>
+    <span class="condition__feel">Ощущается как {{ current.feel }}°C</span>
   </div>
 </template>
 

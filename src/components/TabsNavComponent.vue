@@ -1,22 +1,26 @@
 <template>
-    <ul class="label">
-        <li v-for="item in tabs" :key="item.component" class="label__item">
-            <button
-                class="label__btn"
-                :class="{ active: item.component === activeTab }"
-                @click="toTab(item.component)"
-            >
-                {{ item.text }}
-            </button>
-        </li>
-    </ul>
+  <ul class="tabs">
+    <li 
+      v-for="item in tabs" 
+      :key="item.component" 
+      class="tabs__item"
+    >
+      <button
+        class="tabs__btn"
+        :class="{ _active: item.component === modelValue }"
+        @click="toTab(item.component)"
+      >
+        {{ item.text }}
+      </button>
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
-  name: "tabs-nav-component",
+  name: "TabsNavComponent",
   props: {
-    activeTab: {
+    modelValue: {
       type: String,
       required: true,
     },
@@ -25,10 +29,51 @@ export default {
       required: true,
     },
   },
+  emits: ['update:modelValue'],
   methods: {
-      toTab(component) {
-          console.log(component);
+    toTab(component) {
+      if (this.activeTab !== component) {
+        this.$emit("update:modelValue", component);
       }
-  }
+    },
+  },
 };
 </script>
+
+<style scoped>
+.tabs {
+  display: flex;
+  list-style: none;
+}
+
+.tabs__item:first-child {
+  margin-right: 50px;
+}
+
+.tabs__btn {
+  --color: var(--color-main-light);
+  --color-border: transparent;
+  display: block;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  padding-bottom: 10px;
+  border-bottom: 4px solid var(--color-border);
+  color: var(--color);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.tabs__item .tabs__btn._active {
+  --color: var(--color-main-dark);
+  --color-border: var(--color-main-dark);
+}
+
+@media screen and (min-width: 700px) {
+  .tabs__item:first-child {
+    margin-right: 30px;
+  }
+}
+</style>

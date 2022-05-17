@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUpdated } from "vue";
 
 export default {
   name: "SliderComponent",
@@ -46,14 +46,25 @@ export default {
     const translate = ref(0);
 
     const calcSlideWidth = (slides) => {
-      slideWidth.value =
-        (slider.value.clientWidth -
-          marginBetweenSlides.value * (slidesPerView.value - 1)) /
-        slidesPerView.value;
-      slides.forEach((slide, i) => {
-        if (i) slide.style.marginLeft = `${marginBetweenSlides.value}px`;
-        slide.style.width = `${slideWidth.value}px`;
-      });
+      if (slider.value) {
+        slideWidth.value =
+          (slider.value.clientWidth -
+            marginBetweenSlides.value * (slidesPerView.value - 1)) /
+          slidesPerView.value;
+        slides.forEach((slide, i) => {
+          if (i) slide.style.marginLeft = `${marginBetweenSlides.value}px`;
+          slide.style.width = `${slideWidth.value}px`;
+        });
+      }
+    };
+
+    const watchSlides = () => {
+      const slides = slider.value.querySelectorAll(".slide");
+
+      getSlideCount.value = slides.length;
+      calcSlideWidth(slides);
+      if (getSlideCount.value)
+        window.addEventListener("resize", () => calcSlideWidth(slides));
     };
 
     const nextSlide = () => {
@@ -96,13 +107,11 @@ export default {
     };
 
     onMounted(() => {
-      if (slider.value) {
-        const slides = slider.value.querySelectorAll(".slide");
+      if (slider.value) watchSlides();
+    });
 
-        getSlideCount.value = slides.length;
-        calcSlideWidth(slides);
-        window.addEventListener("resize", () => calcSlideWidth(slides));
-      }
+    onUpdated(() => {
+      if (!getSlideCount.value) watchSlides();
     });
 
     return {
@@ -189,5 +198,4 @@ export default {
     display: flex;
   }
 }
-
 </style>

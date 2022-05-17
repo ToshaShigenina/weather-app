@@ -2,6 +2,7 @@ import {
   createStore
 } from 'vuex'
 import api from '../services/api'
+import dateformat from '../plugins/dateformat'
 
 export default createStore({
   state: {
@@ -38,9 +39,9 @@ export default createStore({
     },
     setCurrent(state, current) {
       state.current = {
-        date: new Date(current.dt * 1000),
-        temp: current.temp,
-        feel: current.feels_like,
+        date: dateformat(new Date(current.dt * 1000)),
+        temp: Math.trunc(current.temp),
+        feel: Math.trunc(current.feels_like),
         description: current.weather[0].description,
         icon: `http://openweathermap.org/img/wn/${current.weather[0].icon}@4x.png`,
         wind_speed: current.wind_speed,
@@ -53,9 +54,9 @@ export default createStore({
     setDaily(state, daily) {
       state.daily = daily.slice(1).map(item => {
         return {
-          date: new Date(item.dt * 1000),
-          tempMax: item.temp.max,
-          tempMin: item.temp.min,
+          date: dateformat(new Date(item.dt * 1000)),
+          tempMax: Math.trunc(item.temp.max),
+          tempMin: Math.trunc(item.temp.min),
           icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
         }
       });
@@ -64,7 +65,7 @@ export default createStore({
       state.hourly = hourly.slice(0, 12).map(item => {
         return {
           time: new Date(item.dt * 1000).getHours(),
-          temp: item.temp,
+          temp: Math.trunc(item.temp),
           icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
         }
       });
@@ -91,7 +92,7 @@ export default createStore({
     }) {
       return api.getWeather(state.location)
         .then(data => {
-          if(data && typeof data === 'object') {
+          if (data && typeof data === 'object') {
             commit('setCurrent', data.current)
             commit('setDaily', data.daily)
             commit('setHourly', data.hourly)
@@ -107,5 +108,6 @@ export default createStore({
         })
     }
   },
+  getters: {},
   modules: {}
 })

@@ -71,9 +71,21 @@ body.theme-dark {
   flex-direction: column;
 }
 
+.container {
+  width: calc(100% - 60px);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
 .content {
   width: 100%;
   flex-shrink: 0;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
 }
 
 @media screen and (min-width: 700px) {
@@ -87,7 +99,17 @@ body.theme-dark {
   }
 }
 
+@media screen and (min-width: 834px) {
+  .container {
+    max-width: 380px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
+  .container {
+    max-width: 520px;
+  }
+
   .content {
     width: 66vw;
     margin-left: 34vw;
@@ -95,8 +117,18 @@ body.theme-dark {
 }
 
 @media screen and (min-width: 1200px) {
+  .container {
+    max-width: 650px;
+  }
+
   .content {
     width: 68vw;
     margin-left: 32vw;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .container {
+    max-width: 780px;
   }
 }

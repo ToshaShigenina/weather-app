@@ -1,7 +1,7 @@
 <template>
   <div class="date">
     <span class="date__item">Сегодня</span>
-    <span class="date__item">{{ current.date || new Date().getDay() }}</span>
+    <span class="date__item">{{ current.date }}</span>
   </div>
 </template>
 

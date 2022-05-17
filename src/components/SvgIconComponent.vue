@@ -1,12 +1,12 @@
 <template>
-    <svg>
-        <use :xlink:href="path"></use>
-    </svg>
+  <svg>
+    <use :xlink:href="path" />
+  </svg>
 </template>
 
 <script>
 export default {
-  name: "svg-icon",
+  name: "SvgIcon",
   props: {
     name: {
       type: String,
@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     path() {
-      return require("@/assets/img/sprite.svg") + '#' + this.name;
+      return require("@/assets/img/sprite.svg") + "#" + this.name;
     },
   },
 };

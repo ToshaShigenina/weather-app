@@ -187,38 +187,6 @@
   margin: 0 auto 30px;
 }
 
-/* tabs label */
-
-.label {
-  display: flex;
-  list-style: none;
-}
-
-.label__item:first-child {
-  margin-right: 50px;
-}
-
-.label__btn {
-  --color: var(--color-main-light);
-  --color-border: transparent;
-  display: block;
-  flex-shrink: 0;
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  padding-bottom: 10px;
-  border-bottom: 4px solid var(--color-border);
-  color: var(--color);
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1;
-}
-
-.label__item .label__btn.active {
-  --color: var(--color-main-dark);
-  --color-border: var(--color-main-dark);
-}
-
 /* tabs */
 
 .tabs {
