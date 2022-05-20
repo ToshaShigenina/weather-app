@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "TabsNavComponent",
+  name: "AppTabsNav",
   props: {
     modelValue: {
       type: String,
@@ -43,11 +43,12 @@ export default {
 <style scoped>
 .tabs {
   display: flex;
+  justify-content: space-between;
   list-style: none;
 }
 
 .tabs__item:first-child {
-  margin-right: 50px;
+  margin-right: 20px;
 }
 
 .tabs__btn {
@@ -64,6 +65,7 @@ export default {
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .tabs__item .tabs__btn._active {

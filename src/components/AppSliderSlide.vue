@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "SliderSlideComponent",
+  name: "AppSliderSlide",
 };
 </script>
 
@@ -16,4 +16,5 @@ export default {
   flex-shrink: 0;
   user-select: none;
 }
+
 </style>

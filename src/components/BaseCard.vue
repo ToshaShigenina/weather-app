@@ -3,8 +3,8 @@
     class="card" 
     :class="{ _small: size === 'sm', _large: size === 'lg' }"
   >
-    <transition>
-      <loader-component v-if="showLoader" />
+    <transition name="fade">
+      <base-loader v-if="showLoader" />
       <div 
         v-else 
         class="card__content"
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import LoaderComponent from "./LoaderComponent.vue";
+import BaseLoader from "./BaseLoader.vue";
 
 export default {
-  name: "CardComponent",
-  components: { LoaderComponent },
+  name: "BaseCard",
+  components: { BaseLoader },
   props: {
     showLoader: {
       type: Boolean,
@@ -62,7 +62,7 @@ export default {
 }
 
 .card._small {
-  max-width: 110px;
+  /* max-width: 110px; */
   min-height: 174px;
 }
 
@@ -76,5 +76,13 @@ export default {
 .card._large .card__name {
   font-weight: 400;
   font-size: 18px;
+}
+
+.card .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>

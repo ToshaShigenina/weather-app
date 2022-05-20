@@ -13,7 +13,7 @@
       for="theme"
     >
       <div class="theme__switch_item">
-        <svg-icon-component 
+        <base-svg-icon 
           class="theme__icon" 
           name="switch"
         />
@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import SvgIconComponent from "./SvgIconComponent.vue";
+import BaseSvgIcon from "./BaseSvgIcon.vue";
 import { ref } from "vue";
 
 export default {
-  name: "ThemeTogglerComponent",
+  name: "BaseThemeToggler",
   components: {
-    SvgIconComponent,
+    BaseSvgIcon,
   },
   setup() {
     const theme = ref(localStorage.getItem("theme"));

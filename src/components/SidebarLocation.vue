@@ -1,6 +1,6 @@
 <template>
   <div class="location">
-    <svg-icon-component 
+    <base-svg-icon 
       name="point" 
       class="location__icon" 
     />
@@ -12,12 +12,12 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 
-import SvgIconComponent from "./SvgIconComponent.vue";
+import BaseSvgIcon from "./BaseSvgIcon.vue";
 
 export default {
-  name: "SidebarLocationComponent",
+  name: "SidebarLocation",
   components: {
-    SvgIconComponent,
+    BaseSvgIcon,
   },
   setup() {
     const store = useStore();

@@ -6,15 +6,15 @@
     <button 
       class="btn_close btn search__btn" 
       type="button"
-      @click="$emit('search-close', false)"
+      @click="openSearch"
     />
     <form
       class="serch__form"
-      @submit.prevent="submitForm(city)"
+      @submit.prevent="submitForm(search)"
     >
       <input 
+        v-model="search"
         type="text" 
-        :value="city" 
         class="input search__input"
       >
       <button
@@ -23,51 +23,53 @@
       >
         Найти
       </button>
-      <!-- <p class="search__error">
-        Упс! Город не найден,<br>
-        попробуйте другой
-      </p> -->
+      <p 
+        v-if="error"
+        class="search__error"
+      >
+        {{ error }}
+      </p>
     </form>
-    <history-component />
+    <slot name="history" />
   </aside>
 </template>
 
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import HistoryComponent from './SearchHistoryComponent.vue';
 
 export default {
-  name: "SearchComponent",
-  components: { HistoryComponent },
+  name: "BaseSearch",
   props: {
     open: {
       type: Boolean,
       required: true,
     },
   },
-  setup() {
+  emits: ["search-close"],
+  setup(_, { emit }) {
     const store = useStore();
-    const submitForm = (city) => {
-      console.log(city);
-    }
-    return {
-      city: computed(() => store.state.city),
-      submitForm
+    const isLoad = computed(() => store.state.isLoad);
+    const error = computed(() => store.getters.getError);
+    const history = computed(() => store.getters.getHistoryReverse);
+    const search = computed({
+      get: () => store.getters.getSearch,
+      set: (val) => store.commit("setSearch", val),
+    });
+    const loadData = () => store.dispatch("loadData");
+    const openSearch = () => {
+      emit('search-close', false);
     };
-  },
-  data() {
+    const submitForm = () => {
+      if (search.value !== history.value[0]) loadData();
+    };
+    
     return {
-      errors: [
-        {
-          type: "search",
-          msg: "Упс! Город не найден, попробуйте другой",
-        },
-        {
-          type: "load",
-          msg: "Что-то пошло не так! Перезагрузите страницу.",
-        },
-      ],
+      isLoad,
+      search,
+      submitForm,
+      error,
+      openSearch
     };
   },
 };
@@ -92,9 +94,6 @@ export default {
 
 .serch__form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 40px;
 }
 
@@ -127,16 +126,15 @@ export default {
 
 .search__error {
   --color: var(--color-error);
-  display: none;
   color: var(--color);
   margin-top: 10px;
   width: 100%;
 }
 
 .search__submit {
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0;
   padding: 16px 22px;
-  order: 1;
 }
 
 .search._open {
@@ -149,19 +147,15 @@ export default {
   }
 }
 
+@media screen and (min-width: 912px) {
+  .search {
+    width: 40%;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .search {
     width: 34%;
-  }
-
-  .search__input {
-    flex-basis: calc(100% - 130px);
-  }
-
-  .search__submit {
-    margin-top: 0;
-    margin-left: 22px;
-    order: 0;
   }
 }
 

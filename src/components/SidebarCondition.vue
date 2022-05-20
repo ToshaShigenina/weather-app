@@ -25,7 +25,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  name: "SidebarConditionComponent",
+  name: "SidebarCondition",
   setup() {
     const store = useStore();
     return {

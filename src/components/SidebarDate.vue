@@ -10,7 +10,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  name: "SidebarDateComponent",
+  name: "SidebarDate",
   setup() {
     const store = useStore();
     return {

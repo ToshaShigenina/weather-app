@@ -3,53 +3,26 @@
     <sidebar-component />
     <div class="content">
       <forecast-component />
-      <slider-component
-        :slides-per-view="4"
-        :between-slides="24"
-        style="margin: 0 64px; width: 80%"
-      >
-        <slider-slide-component 
-          v-for="(slide, i) in slides" 
-          :key="i"
-        >
-          <card-component 
-            :name="slide"
-          />
-        </slider-slide-component>
-      </slider-component>
+      <current-component />
     </div>
   </div>
 </template>
 
 <script>
-import SidebarComponent from "./components/SidebarComponent.vue";
-import ForecastComponent from "./components/ForecastComponent.vue";
-import CardComponent from "./components/CardComponent.vue";
-import SliderComponent from "./components/SliderComponent.vue";
-import SliderSlideComponent from "./components/SliderSlideComponent.vue";
+import SidebarComponent from "./components/ViewSidebar.vue";
+import ForecastComponent from "./components/ViewForecast.vue";
+import CurrentComponent from "./components/ViewCurrent.vue";
 
 export default {
   name: "App",
   components: {
     SidebarComponent,
     ForecastComponent,
-    CardComponent,
-    SliderComponent,
-    SliderSlideComponent,
-  },
-  setup() {
-    const slides = [
-      "djdjd",
-      "oiyioyioy",
-      "edaa raad",
-      "kif rd jos dio",
-      "dfjikd ajfd fjdf sj",
-      "kdfjkf",
-    ];
-    return { slides };
+    CurrentComponent,
   },
   beforeCreate() {
-    this.$store.dispatch('loadData');
-  }
+    this.$store.dispatch("initHistory");
+    this.$store.dispatch("loadData");
+  },
 };
 </script>

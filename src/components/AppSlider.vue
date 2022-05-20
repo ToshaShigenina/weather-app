@@ -3,11 +3,13 @@
     ref="slider" 
     class="slider"
   >
-    <div 
-      ref="sliderContainer" 
-      class="slider__container"
-    >
-      <slot :currentSlide="currentSlide" />
+    <div class="slider__wrapper">
+      <div 
+        ref="sliderContainer" 
+        class="slider__container"
+      >
+        <slot />
+      </div>
     </div>
     <button
       class="slider__btn slider__btn-prev"
@@ -21,10 +23,10 @@
 </template>
 
 <script>
-import { ref, onMounted, onUpdated } from "vue";
+import { ref, reactive, onMounted, onUpdated } from "vue";
 
 export default {
-  name: "SliderComponent",
+  name: "AppSlider",
   props: {
     slidesPerView: {
       type: Number,
@@ -34,6 +36,12 @@ export default {
       type: Number,
       default: 0,
     },
+    breackpoints: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   setup(props) {
     const slider = ref(null);
@@ -42,13 +50,30 @@ export default {
     const getSlideCount = ref(null);
     const marginBetweenSlides = ref(props.betweenSlides);
     const slidesPerView = ref(props.slidesPerView);
+    const breackpoints = reactive(props.breackpoints);
     const slideWidth = ref(null);
     const translate = ref(0);
 
+    const watchBreackpoints = () => {
+      const points = Object.keys(breackpoints);
+      const minPoint = Math.min(...points);
+      points.forEach((item) => {
+        if (window.innerWidth >= item) {
+          const count = breackpoints[item].slidesPerView
+          if(count !== undefined) {
+            slidesPerView.value = count;
+          }
+        } else if (window.innerWidth < minPoint) {
+          slidesPerView.value = props.slidesPerView;
+        }
+      });
+    };
+
     const calcSlideWidth = (slides) => {
-      if (slider.value) {
+      if (slider.value && sliderContainer.value) {
+        watchBreackpoints();
         slideWidth.value =
-          (slider.value.clientWidth -
+          (sliderContainer.value.clientWidth -
             marginBetweenSlides.value * (slidesPerView.value - 1)) /
           slidesPerView.value;
         slides.forEach((slide, i) => {
@@ -75,7 +100,7 @@ export default {
           sliderContainer.value.scrollWidth +
             translate.value -
             slideWidth.value >
-            slider.value.clientWidth
+            sliderContainer.value.clientWidth
         ) {
           translate.value =
             (slideWidth.value + marginBetweenSlides.value) *
@@ -101,13 +126,15 @@ export default {
       } else {
         currentSlide.value = getSlideCount.value - slidesPerView.value + 1;
         translate.value =
-          (sliderContainer.value.scrollWidth - slider.value.clientWidth) * -1;
+          (sliderContainer.value.scrollWidth -
+            sliderContainer.value.clientWidth) *
+          -1;
       }
       sliderContainer.value.style.transform = `translateX(${translate.value}px)`;
     };
 
     onMounted(() => {
-      if (slider.value) watchSlides();
+      if (slider.value && sliderContainer.value) watchSlides();
     });
 
     onUpdated(() => {
@@ -132,6 +159,10 @@ export default {
 .slider {
   position: relative;
   width: 100%;
+  
+}
+
+.slider__wrapper {
   overflow: hidden;
 }
 
@@ -146,7 +177,7 @@ export default {
 .slider__btn {
   --color-bg: var(--color-white);
   --size: 32px;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -157,6 +188,16 @@ export default {
   border: none;
   margin-top: 15px;
   transform: translateY(-50%);
+}
+
+.slider__btn::before {
+  content: "";
+  width: 12px;
+  height: 16px;
+  background-image: url("../assets/img/slider-arrow.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
 }
 
 .slider__btn:disabled {
@@ -170,23 +211,10 @@ export default {
 
 .slider__btn-prev {
   left: 0;
-  /* left: calc(var(--size) * -1.5); */
 }
 
 .slider__btn-next {
   right: 0;
-  /* right: calc(var(--size) * -1.5); */
-}
-
-.slider__btn-prev::before,
-.slider__btn-next::before {
-  content: "";
-  width: 12px;
-  height: 16px;
-  background-image: url("../assets/img/slider-arrow.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
 }
 
 .slider__btn-prev::before {

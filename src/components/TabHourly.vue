@@ -1,17 +1,17 @@
 
 <template>
-  <tabs-item-component :data="hourly" />
+  <app-tabs-item :data="hourly" />
 </template>
 
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import TabsItemComponent from "./TabsItemComponent.vue";
+import AppTabsItem from "./AppTabsItem.vue";
 
 export default {
-  name: 'ForecastHourlyComponent',
+  name: 'TabHourly',
   components: {
-    TabsItemComponent,
+    AppTabsItem,
   },
   setup() {
     const store = useStore();

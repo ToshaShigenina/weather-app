@@ -1,10 +1,10 @@
 <template>
   <ul class="history">
-    <li 
+    <li
       v-for="(item, i) in history"
       :key="i"
       class="history__item"
-      @click="changeCity(item)"
+      @click="setSearchFromHistory(item)"
     >
       {{ item }}
     </li>
@@ -16,12 +16,21 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  name: "SearchHistoryComponent",
+  name: "BaseSearchHistory",
   setup() {
     const store = useStore();
+    const history = computed(() => store.getters.getHistoryReverse);
+    const setSearch = (val) => store.commit("setSearch", val);
+    const loadData = () => store.dispatch("loadData");
+    const setSearchFromHistory = (val) => {
+      if (history.value[0] !== val) {
+        setSearch(val);
+        loadData();
+      }
+    };
     return {
-      history: computed(() => store.state.history),
-      changeCity: (city) => store.commit('changeCity', city),
+      history,
+      setSearchFromHistory,
     };
   },
 };

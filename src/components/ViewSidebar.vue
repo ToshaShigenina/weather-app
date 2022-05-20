@@ -1,10 +1,12 @@
 <template>
   <section class="sidebar">
-    <search-component 
+    <base-search 
       class="sidebar__search"
       :open="open"
       @search-close="toggleSearch(false)"
-    />
+    >
+      <base-search-history />
+    </base-search>
     <button 
       class="sidebar__btn btn" 
       type="button"
@@ -12,33 +14,43 @@
     >
       Поиск города
     </button>
-    <theme-toggler-component class="sidebar__toggler" />
-    <div class="sidebar__container">
-      <condition-component class="sidebar__condition" />
-      <date-component class="sidebar__date" />
-      <location-component class="sidebar__location" />
-    </div>
+    <base-theme-toggler class="sidebar__toggler" />
+    <transition name="fade">
+      <base-loader v-if="isLoad" />
+      <div 
+        v-else 
+        class="sidebar__container"
+      >
+        <sidebar-condition class="sidebar__condition" />
+        <sidebar-date class="sidebar__date" />
+        <sidebar-location class="sidebar__location" />
+      </div>
+    </transition>
   </section>
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
 
-import SearchComponent from "./SearchComponent.vue";
-import ThemeTogglerComponent from "./ThemeTogglerComponent.vue";
-import ConditionComponent from "./SidebarConditionComponent.vue";
-import DateComponent from "./SidebarDateComponent.vue";
-import LocationComponent from "./SidebarLocationComponent.vue";
+import BaseSearch from "./BaseSearch.vue";
+import BaseSearchHistory from "./BaseSearchHistory.vue";
+import BaseThemeToggler from "./BaseThemeToggler.vue";
+import SidebarCondition from "./SidebarCondition.vue";
+import SidebarDate from "./SidebarDate.vue";
+import SidebarLocation from "./SidebarLocation.vue";
+import BaseLoader from "./BaseLoader.vue";
 
 export default {
-  name: "SidebarComponent",
+  name: "ViewSidebar",
   components: {
-    SearchComponent,
-    ThemeTogglerComponent,
-    ConditionComponent,
-    DateComponent,
-    LocationComponent,
+    BaseSearch,
+    BaseSearchHistory,
+    BaseThemeToggler,
+    SidebarCondition,
+    SidebarDate,
+    SidebarLocation,
+    BaseLoader,
   },
   setup() {
     const store = useStore();
@@ -46,16 +58,31 @@ export default {
     const toggleSearch = (val) => {
       open.value = val;
     };
+    watch(open, (_, newVal) => {
+      console.log(newVal);
+      if (newVal) {
+        document.body.classList.remove("_overflow");
+      } else {
+        document.body.classList.add("_overflow");
+      }
+    });
     return {
       open,
       toggleSearch,
-      city: computed(() => store.state.city),
+      isLoad: computed(() => store.state.isLoad),
     };
   },
 };
 </script>
 
 <style scoped>
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .sidebar {
   --color-bg: var(--color-white);
   position: relative;
@@ -105,24 +132,29 @@ export default {
     z-index: 100;
     top: 0;
     left: 0;
-    width: 45vw;
+    width: 45%;
     height: 100%;
     overflow-y: scroll;
     flex-grow: 1;
   }
 
   .sidebar__container {
-    min-height: 90vh;
+    margin-top: 4vh;
+  }
+}
+@media screen and (min-width: 912px) {
+  .sidebar {
+    width: 40%;
   }
 }
 @media screen and (min-width: 1024px) {
   .sidebar {
-    width: 34vw;
+    width: 34%;
   }
 }
 @media screen and (min-width: 1200px) {
   .sidebar {
-    width: 32vw;
+    width: 32%;
   }
 }
 </style>
