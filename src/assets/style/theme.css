@@ -1,0 +1,57 @@
+.theme {
+    --color-bg: var(--color-white);
+    --color-bg-switch: var(--color-main-dark);
+    --color: var(--color-switch);
+    --color-border: var(--color-main-light);
+    position: absolute;
+    z-index: 10;
+    top: 40px;
+    right: 30px;
+  }
+  
+  .theme__checkbox {
+    display: none;
+  }
+  
+  .theme__switch {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    width: 64px;
+    height: 32px;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: 16px;
+    transition: background-color 0.5s;
+  }
+  
+  .theme__switch_item {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-bg-switch);
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+    transition: all 0.5s;
+  }
+  
+  .theme__icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 13px;
+    height: 13px;
+    fill: var(--color);
+  }
+  
+  .theme__checkbox:checked+.theme__switch {
+    --color-bg: var(--color-theme-dark-main);
+    --color-bg-switch: var(--color-accent);
+    --color: var(--color-theme-dark-main);
+  }
+  
+  .theme__checkbox:checked+.theme__switch>.theme__switch_item {
+    transform: translateX(32px);
+  }

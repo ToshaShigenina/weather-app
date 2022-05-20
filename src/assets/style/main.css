@@ -1,0 +1,160 @@
+@import url("./fonts.css");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-main-dark: #48484a;
+  --color-main-light: #acacac;
+  --color-main-bg: #e5e5e5;
+  --color-white: #fff;
+  --color-accent: #ec6e4d;
+  --color-error: #f18c72;
+  --color-switch: #e6e6e6;
+  --color-theme-dark-main: #212331;
+  --font: "Rubik", "Tahoma", "Arial", sans-serif;
+  --shadow: 0px 7px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  --color-sidebar: var(--color-main-dark);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sidebar) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-sidebar);
+  border-radius: 6px;
+  border: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  --color-bg: var(--color-main-bg);
+  --color: var(--color-main-dark);
+  min-height: 100vh;
+  color: var(--color);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.2;
+  background-color: var(--color-bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color) transparent;
+}
+
+body.theme-dark {
+  --color-main-dark: #e6e6e6;
+  --color-main-bg: #100e1c;
+  --color-white: #212331;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: calc(100% - 60px);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.content {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.section {
+  padding: 60px 0 30px;
+}
+
+.section .heading {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 699px) {
+  body._overflow {
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    flex-direction: row;
+  }
+
+  .content {
+    width: 55%;
+    margin-left: 45%;
+  }
+}
+
+@media screen and (min-width: 912px) {
+  .container {
+    max-width: 380px;
+  }
+
+  .content {
+    width: 60%;
+    margin-left: 40%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 520px;
+  }
+
+  .content {
+    width: 66%;
+    margin-left: 34%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 650px;
+  }
+
+  .content {
+    width: 68%;
+    margin-left: 32%;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .container {
+    max-width: 780px;
+  }
+}
