@@ -6,7 +6,7 @@
     <button 
       class="btn_close btn search__btn" 
       type="button"
-      @click="openSearch"
+      @click="closeSearch"
     />
     <form
       class="serch__form"
@@ -57,7 +57,7 @@ export default {
       set: (val) => store.commit("setSearch", val),
     });
     const loadData = () => store.dispatch("loadData");
-    const openSearch = () => {
+    const closeSearch = () => {
       emit('search-close', false);
     };
     const submitForm = () => {
@@ -69,7 +69,7 @@ export default {
       search,
       submitForm,
       error,
-      openSearch
+      closeSearch
     };
   },
 };

@@ -5,7 +5,9 @@
       :open="open"
       @search-close="toggleSearch(false)"
     >
-      <base-search-history />
+      <template #history>
+        <base-search-history />
+      </template>
     </base-search>
     <button 
       class="sidebar__btn btn" 
@@ -59,7 +61,6 @@ export default {
       open.value = val;
     };
     watch(open, (_, newVal) => {
-      console.log(newVal);
       if (newVal) {
         document.body.classList.remove("_overflow");
       } else {
