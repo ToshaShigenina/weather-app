@@ -7,13 +7,13 @@
     z-index: 10;
     top: 40px;
     right: 30px;
-  }
-  
-  .theme__checkbox {
+}
+
+.theme__checkbox {
     display: none;
-  }
-  
-  .theme__switch {
+}
+
+.theme__switch {
     position: relative;
     cursor: pointer;
     display: block;
@@ -23,9 +23,9 @@
     border: 2px solid var(--color-border);
     border-radius: 16px;
     transition: background-color 0.5s;
-  }
-  
-  .theme__switch_item {
+}
+
+.theme__switch_item {
     position: absolute;
     display: block;
     width: 20px;
@@ -35,23 +35,23 @@
     top: 4px;
     left: 4px;
     transition: all 0.5s;
-  }
-  
-  .theme__icon {
+}
+
+.theme__icon {
     position: absolute;
     top: 3px;
     left: 3px;
     width: 13px;
     height: 13px;
     fill: var(--color);
-  }
-  
-  .theme__checkbox:checked+.theme__switch {
+}
+
+.theme__checkbox:checked+.theme__switch {
     --color-bg: var(--color-theme-dark-main);
     --color-bg-switch: var(--color-accent);
     --color: var(--color-theme-dark-main);
-  }
-  
-  .theme__checkbox:checked+.theme__switch>.theme__switch_item {
+}
+
+.theme__checkbox:checked+.theme__switch>.theme__switch_item {
     transform: translateX(32px);
-  }
+}
