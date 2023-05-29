@@ -33,11 +33,6 @@ exports[`ThemeSwitch отрабатывает изменение темы 1`] = 
 
 exports[`ThemeSwitch отрабатывает изменение темы 2`] = `
 <body>
-  <div
-    data-testid="sprite"
-    hidden=""
-    id="sprite"
-  />
   <div>
     <div
       class="theme"
@@ -75,11 +70,6 @@ exports[`ThemeSwitch отрабатывает изменение темы 3`] = 
 <body
   class="theme-dark"
 >
-  <div
-    data-testid="sprite"
-    hidden=""
-    id="sprite"
-  />
   <div>
     <div
       class="theme"
@@ -117,11 +107,6 @@ exports[`ThemeSwitch сразу устанавливается темная те
 <body
   class="theme-dark"
 >
-  <div
-    data-testid="sprite"
-    hidden=""
-    id="sprite"
-  />
   <div>
     <div
       class="theme"
@@ -159,11 +144,6 @@ exports[`ThemeSwitch сразу устанавливается темная те
 <body
   class=""
 >
-  <div
-    data-testid="sprite"
-    hidden=""
-    id="sprite"
-  />
   <div>
     <div
       class="theme"
@@ -201,11 +181,6 @@ exports[`ThemeSwitch устанавливается светлая тема из
 <body
   class=""
 >
-  <div
-    data-testid="sprite"
-    hidden=""
-    id="sprite"
-  />
   <div>
     <div
       class="theme"
