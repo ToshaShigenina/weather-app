@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon добавляется дополнительный класс 1`] = `
+<svg
+  class="test-class svg-icon"
+  data-testid="icon"
+  height="24"
+  width="24"
+>
+  <use
+    xlink:href="#point"
+  />
+</svg>
+`;
+
+exports[`Icon задается кастомная ширина и высота 1`] = `
+<svg
+  class="svg-icon"
+  data-testid="icon"
+  height="150"
+  width="100"
+>
+  <use
+    xlink:href="#point"
+  />
+</svg>
+`;
+
+exports[`Icon меняется тип иконки 1`] = `
+<svg
+  class="svg-icon"
+  data-testid="icon"
+  height="24"
+  width="24"
+>
+  <use
+    xlink:href="#switch"
+  />
+</svg>
+`;
+
+exports[`Icon установлены дефолтная ширина и высота 1`] = `
+<svg
+  class="svg-icon"
+  data-testid="icon"
+  height="24"
+  width="24"
+>
+  <use
+    xlink:href="#point"
+  />
+</svg>
+`;
+
+exports[`Icon ширина и высота заданы через проп size 1`] = `
+<svg
+  class="svg-icon"
+  data-testid="icon"
+  height="32"
+  width="32"
+>
+  <use
+    xlink:href="#point"
+  />
+</svg>
+`;

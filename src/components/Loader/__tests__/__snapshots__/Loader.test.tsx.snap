@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader snapshot для лоадера 1`] = `
+<div
+  class="loader"
+  data-testid="loader"
+>
+  <div
+    class="lds-ellipsis"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Loader добавляется дополнительный класс 1`] = `
+<div
+  class="loader test-class"
+  data-testid="loader"
+>
+  <div
+    class="lds-ellipsis"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</div>
+`;
