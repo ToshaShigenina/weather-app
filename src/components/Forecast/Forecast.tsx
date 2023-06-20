@@ -5,13 +5,13 @@ import './style.css';
 
 const Forecast = () => {
     const slides = [
-        'offjmbgk',
-        /* 'zdh665;',
-        'hfdghdfghd',
-        'dfghdfgh',
-        'fghdfgh',
-        'ndtyjmfyu',
-        'dve5465u67', */
+        '1',
+        '2;',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
     ];
 
     return (
@@ -24,12 +24,14 @@ const Forecast = () => {
                 </div>
 
                 <div className="forecast__content">
-                    <Slider>
-                        <SliderItem>
-                            <p>
-                                kdkvkg
-                            </p>
-                        </SliderItem>
+                    <Slider slidesPerView={ 2 } marginBetweenSlides={ 10 }>
+                        { slides.map((slide, i) => (
+                            <SliderItem key={ 'slide-' + i }>
+                                <p>
+                                    { slide }
+                                </p>
+                            </SliderItem>
+                        )) }
                     </Slider>
                 </div>
             </div>

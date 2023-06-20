@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import cn from 'classnames';
+import SliderItem from './SliderItem';
 import SliderBtn from './SliderBtn';
+import { SliderContextProvider, type SliderContextType } from './context';
 
 import './css/slider.css';
 
@@ -19,36 +21,59 @@ const asArray = (children: React.ReactNode): Array<React.ReactNode> => {
     }
     return [];
 };
+const getCountSlides = (children: React.ReactNode): number => {
+    return asArray(children).length
+};
 const Slider: React.FC<SliderProps> = ({ children, slidesPerView = 1, marginBetweenSlides = 0, breackpoints = {}, ...otherProps }) => {
     const sliderRef = useRef(null);
-    const sliderContainerRef = useRef(null);
+    const sliderWrapperRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(1);
-    const [slideWidth, setSlideWidth] = useState(100);
-    const countSlides = asArray(children).length;
+    const [slideWidth, setSlideWidth] = useState(0);
+    const [countSlides, setCountSlides] = useState(0);
     const [countSlidesPerView, setCountSlidesPerView] = useState(slidesPerView);
     const [translate, setTranslate] = useState(0);
+    const context: SliderContextType = { width: slideWidth }
 
     useEffect(() => {
-        console.log(asArray(children))
+        const count = getCountSlides(children);
+        setCountSlides(count);
+        if (count > 0 && sliderWrapperRef && sliderWrapperRef.current) {
+            const sliderWidth = (sliderWrapperRef.current as HTMLDivElement).clientWidth
+            setSlideWidth((sliderWidth - ((slidesPerView - 1) * marginBetweenSlides)) / slidesPerView);
+        }
     }, [children]);
 
     const clickToPrevBtn = () => {
-        setCurrentSlide(currentSlide + 1)
+        if (currentSlide > 1) {
+            setCurrentSlide(currentSlide - 1)
+            setTranslate(translate + (slideWidth + marginBetweenSlides));
+        }
     };
     const clickToNextBtn = () => {
-        setCurrentSlide(currentSlide - 1)
+        if (currentSlide <= countSlides - slidesPerView) {
+            setCurrentSlide(currentSlide + 1)
+            setTranslate(translate - (slideWidth + marginBetweenSlides));
+        }
     };
 
     return (
-        <div className="slider" ref={ sliderRef } { ...otherProps }>
-            <div className="slider__wrapper">
-                <div className="slider__container" ref={ sliderContainerRef }>
-                    { children }
+        <SliderContextProvider value={ context }>
+            <div className="slider" ref={ sliderRef } { ...otherProps }>
+                <div className="slider__wrapper" ref={ sliderWrapperRef }>
+                    <div
+                        className="slider__container"
+                        style={ {
+                            transform: `translateX(${translate}px)`,
+                            gap: marginBetweenSlides
+                        } }
+                    >
+                        { children }
+                    </div>
                 </div>
+                <SliderBtn onClick={ clickToPrevBtn } direction="prev" />
+                <SliderBtn onClick={ clickToNextBtn } direction="next" />
             </div>
-            <SliderBtn onClick={ clickToPrevBtn } direction="prev" />
-            <SliderBtn onClick={ clickToNextBtn } direction="next" />
-        </div>
+        </SliderContextProvider>
     );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { Icon } from '../Icon';
+import { ReactComponent as SliderArrow } from './svg/slider-arrow.svg'
 
 type SliderBtnDirectionType = 'prev' | 'next';
 interface SliderBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,7 +13,7 @@ const SliderBtn: React.FC<SliderBtnProps> = ({ direction = '', className, ...oth
             className={ cn(className, 'slider__btn', direction && `slider__btn-${direction}`) }
             { ...otherProps }
         >
-            <Icon type="arrow" />
+            <SliderArrow />
         </button>
     );
 };

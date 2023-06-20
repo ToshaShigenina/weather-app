@@ -49,6 +49,10 @@
     right: 0;
 }
 
+.slider__btn-prev svg {
+    transform: rotateZ(180deg);
+}
+
 @media screen and (min-width: 700px) {
     .slider__btn {
         display: flex;
