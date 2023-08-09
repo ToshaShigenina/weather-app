@@ -6,7 +6,7 @@ import './style.css';
 const Forecast = () => {
     const slides = [
         '1',
-        '2;',
+        '2',
         '3',
         '4',
         '5',
@@ -24,12 +24,13 @@ const Forecast = () => {
                 </div>
 
                 <div className="forecast__content">
-                    <Slider slidesPerView={ 2 } marginBetweenSlides={ 10 }>
+                    <Slider
+                        slidesPerView={ 2 }
+                        marginBetweenSlides={ 30 }
+                    >
                         { slides.map((slide, i) => (
                             <SliderItem key={ 'slide-' + i }>
-                                <p>
-                                    { slide }
-                                </p>
+                                <p>{ slide }</p>
                             </SliderItem>
                         )) }
                     </Slider>
