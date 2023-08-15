@@ -25,8 +25,18 @@ const Forecast = () => {
 
                 <div className="forecast__content">
                     <Slider
-                        slidesPerView={ 2 }
+                        slidesPerView={ 6 }
                         marginBetweenSlides={ 30 }
+                        breackpoints={ {
+                            480: {
+                                slidesPerView: 1,
+                                marginBetweenSlides: 10,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                                marginBetweenSlides: 20,
+                            }
+                        } }
                     >
                         { slides.map((slide, i) => (
                             <SliderItem key={ 'slide-' + i }>

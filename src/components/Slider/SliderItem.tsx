@@ -6,17 +6,17 @@ import './css/slide.css';
 
 const SliderItem: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = '', style = {}, ...otherProps }) => {
     const slideKey = Symbol();
+    const [slideIndex, setSlideIndex] = useState(0);
     const sliderCtx = useContext<SliderContextType | null>(SliderContext);
     const width = sliderCtx && sliderCtx.width > 0
         ? sliderCtx.width + 'px'
         : '100%';
-    const [marginLeft, setMarginLeft] = useState<number>(sliderCtx?.margin || 0)
+    const marginLeft = sliderCtx?.margin || 0;
 
     useEffect(() => {
         if (sliderCtx && sliderCtx.addSliderKey && !sliderCtx.sliderKeys.includes(slideKey)) {
-            const index = sliderCtx.sliderKeys.length;
+            setSlideIndex(sliderCtx.sliderKeys.length);
             sliderCtx.addSliderKey(slideKey);
-            if (marginLeft && !index) setMarginLeft(0);
         }
     }, []);
     return (
@@ -25,7 +25,7 @@ const SliderItem: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, 
             style={ {
                 ...style,
                 width,
-                marginLeft
+                marginLeft: slideIndex ? marginLeft : 0,
             } }
             { ...otherProps }
         >

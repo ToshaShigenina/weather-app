@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useResize } from '../../hooks';
 import SliderBtn from './SliderBtn';
 import { SliderContextProvider, type SliderContextType } from './context';
 
@@ -24,18 +25,38 @@ const asArray = (children: React.ReactNode): Array<React.ReactNode> => {
 const getCountSlides = (children: React.ReactNode): number => {
     return asArray(children).length
 };
-const Slider: React.FC<SliderProps> = ({ children = null, slidesPerView = 1, marginBetweenSlides = 0, breackpoints = {}, ...otherProps }) => {
+const getMinBreackpoint = (breackpoints: Record<number, boolean>): number => {
+    const bpTemp = Object.entries(breackpoints)
+        .filter(([_, value]) => value)
+        .map(([key, _]) => Number(key));
+    return Math.min(...bpTemp);
+};
+const getBreackpointsMap = (breackpoints: Record<number, SliderBreackpointProps>, width: number): Record<number, boolean> => {
+    const keys = Object.keys(breackpoints);
+    return keys.reduce((obj, key) => {
+        if (!isNaN(Number(key))) {
+            return {
+                ...obj,
+                [key]: Number(key) >= width
+            }
+        }
+        return obj;
+    }, {});
+};
+const Slider: React.FC<SliderProps> = ({ children = null, slidesPerView = 1, marginBetweenSlides = 0, breackpoints, ...otherProps }) => {
     const sliderRef = useRef(null);
     const sliderWrapperRef = useRef(null);
+    const { width: windowWidth } = useResize();
     const [currentSlide, setCurrentSlide] = useState(1);
     const [slideWidth, setSlideWidth] = useState(0);
     const [countSlides, setCountSlides] = useState(0);
     const [countSlidesPerView, setCountSlidesPerView] = useState(slidesPerView);
+    const [sliderGap, setSliderGap] = useState(marginBetweenSlides);
     const [translate, setTranslate] = useState(0);
     const [sliderKeys, setSliderKeys] = useState<symbol[]>([]);
     const context: SliderContextType = {
         width: slideWidth,
-        margin: marginBetweenSlides,
+        margin: sliderGap,
         sliderKeys,
         addSliderKey: (key: symbol) => {
             sliderKeys.push(key);
@@ -43,25 +64,43 @@ const Slider: React.FC<SliderProps> = ({ children = null, slidesPerView = 1, mar
         }
     };
 
-    useEffect(() => {
+    const calcSlideWidth = () => {
         const count = getCountSlides(children);
         setCountSlides(count);
         if (count > 0 && sliderWrapperRef && sliderWrapperRef.current) {
             const sliderWidth = (sliderWrapperRef.current as HTMLDivElement).clientWidth
-            setSlideWidth((sliderWidth - ((countSlidesPerView - 1) * marginBetweenSlides)) / countSlidesPerView);
+            setSlideWidth((sliderWidth - ((countSlidesPerView - 1) * sliderGap)) / countSlidesPerView);
         }
-    }, [children, countSlidesPerView, marginBetweenSlides]);
+    };
+    useEffect(() => {
+        if (breackpoints) {
+            const bpMap = getBreackpointsMap(breackpoints, windowWidth);
+            if (Object.values(bpMap).every((item) => !item)) {
+                setCountSlidesPerView(slidesPerView);
+                setSliderGap(marginBetweenSlides);
+            } else {
+                const bpMin = getMinBreackpoint(bpMap);
+                const bpTemp = breackpoints[bpMin];
+                if (bpTemp.slidesPerView !== undefined) setCountSlidesPerView(bpTemp.slidesPerView);
+                if (bpTemp.marginBetweenSlides !== undefined) setSliderGap(bpTemp.marginBetweenSlides);
+            }
+        }
+        calcSlideWidth();
+    }, [windowWidth]);
+    useEffect(() => {
+        calcSlideWidth();
+    }, [children, countSlidesPerView, sliderGap]);
 
     const clickToPrevBtn = () => {
         if (currentSlide > 1) {
             setCurrentSlide(currentSlide - 1)
-            setTranslate(translate + (slideWidth + marginBetweenSlides));
+            setTranslate(translate + (slideWidth + sliderGap));
         }
     };
     const clickToNextBtn = () => {
         if (currentSlide <= countSlides - countSlidesPerView) {
             setCurrentSlide(currentSlide + 1)
-            setTranslate(translate - (slideWidth + marginBetweenSlides));
+            setTranslate(translate - (slideWidth + sliderGap));
         }
     };
 
