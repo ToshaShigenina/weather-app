@@ -1,4 +1,4 @@
-export { default as ThemeSwitch } from './ThemeSwitch';
+export { default as ThemeSwitcher } from './Switcher';
 export {
 	ThemeContext,
 	ThemeContextProvider,

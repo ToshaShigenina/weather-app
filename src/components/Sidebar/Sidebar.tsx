@@ -1,31 +1,29 @@
 import React from "react";
-import { SidebarContext, SidebarContextProvider } from "./context";
+import { SidebarContext } from "./context";
 import { Search } from '../Search';
-import { ThemeSwitch } from "../Theme";
+import { ThemeSwitcher } from "../Theme";
 
 import './css/style.css'
 
 const Sidebar = () => {
     const ctx = React.useContext(SidebarContext);
 
-    const onToggleSearch = () => {
+    const onOpenSearch = () => {
         if (ctx) {
             ctx.toggleSearch(true)
         }
     };
 
     return (
-        <SidebarContextProvider>
-            <section className="sidebar">
-                <Search />
-                <button type="button"
-                    className="sidebar__btn btn"
-                    onClick={ onToggleSearch } >
-                    Поиск города
-                </button>
-                <ThemeSwitch className="sidebar__toggler" />
-            </section>
-        </SidebarContextProvider>
+        <section className="sidebar">
+            <Search />
+            <button type="button"
+                className="sidebar__btn btn"
+                onClick={ onOpenSearch } >
+                Поиск города
+            </button>
+            <ThemeSwitcher className="sidebar__toggler" />
+        </section>
     );
 };
 

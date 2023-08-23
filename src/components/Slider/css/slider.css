@@ -30,10 +30,13 @@
     border: none;
     margin-top: 15px;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
 .slider__btn:disabled {
     opacity: 0.3;
+    cursor: default;
+    user-select: none;
 }
 
 .slider__btn-prev,

@@ -11,9 +11,10 @@
     font-weight: 700;
     font-size: 18px;
     color: var(--color);
+    cursor: pointer;
 }
 
-.btn_close {
+.btn-close {
     --color: var(--color-main-dark);
     display: block;
     position: relative;
@@ -24,8 +25,8 @@
     height: 30px;
 }
 
-.btn_close::before,
-.btn_close::after {
+.btn-close::before,
+.btn-close::after {
     content: "";
     position: absolute;
     width: 36px;
@@ -35,10 +36,10 @@
     left: 50%;
 }
 
-.btn_close::before {
+.btn-close::before {
     transform: translate(-50%, -50%) rotateZ(45deg);
 }
 
-.btn_close::after {
+.btn-close::after {
     transform: translate(-50%, -50%) rotateZ(-45deg);
 }

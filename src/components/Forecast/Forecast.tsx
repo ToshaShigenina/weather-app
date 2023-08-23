@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slider, SliderItem } from '../Slider';
+import { Slider } from '../Slider';
 
 import './style.css';
 
@@ -39,9 +39,9 @@ const Forecast = () => {
                         } }
                     >
                         { slides.map((slide, i) => (
-                            <SliderItem key={ 'slide-' + i }>
+                            <Slider.Slide key={ 'slide-' + i }>
                                 <p>{ slide }</p>
-                            </SliderItem>
+                            </Slider.Slide>
                         )) }
                     </Slider>
                 </div>

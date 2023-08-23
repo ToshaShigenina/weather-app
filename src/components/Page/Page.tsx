@@ -7,6 +7,7 @@ import { Icon } from '../Icon';
 const Page = () => {
 	return (
 		<div className="wrapper">
+			<Sidebar />
 			<div className="content">
 				<Forecast />
 				<section className="section current">

@@ -5,7 +5,7 @@ import { ThemeContext, type ThemeNameType } from './context';
 
 import './css/style.css';
 
-const ThemeSwitch: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...otherProps }) => {
+const Switcher: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...otherProps }) => {
     const ctx = React.useContext(ThemeContext);
     const theme: ThemeNameType = ctx?.theme || 'light';
 
@@ -18,8 +18,7 @@ const ThemeSwitch: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
 
     return (
         <div className={ cn(className, 'theme') } { ...otherProps }>
-            <label className="theme__switch"
-                htmlFor="theme" >
+            <label className="theme__switch" htmlFor="theme">
                 <input id="theme"
                     type="checkbox"
                     className="theme__checkbox"
@@ -33,4 +32,4 @@ const ThemeSwitch: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
     );
 };
 
-export default ThemeSwitch;
+export default Switcher;

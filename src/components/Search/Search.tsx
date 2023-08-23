@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { useForm, type SubmitHandler, type FieldValues } from 'react-hook-form';
 import { SidebarContext } from '../Sidebar';
+import { History } from '../History';
+import { Icon } from '../Icon';
 
 import './css/style.css';
 
-const Search: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className }) => {
+const Search: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+    className,
+    children,
+    ...otherProps
+}) => {
+    const [cityNotFound, setCityNotFound] = useState(false);
     const {
         register,
         handleSubmit,
@@ -24,7 +31,7 @@ const Search: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className }) =
     };
 
     return (
-        <aside className={ cn(className, 'search', isOpen && '_open') }>
+        <aside { ...otherProps } className={ cn(className, 'search', isOpen && '_open') }>
             <button
                 className="btn-close btn search__btn"
                 type="button"
@@ -34,20 +41,21 @@ const Search: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className }) =
                 className="serch__form"
                 onSubmit={ handleSubmit(onSubmit) }
             >
-                <input
-                    placeholder="Введите название города"
-                    type="text"
-                    className="input search__input"
-                    { ...register('city', {
-                        required: true,
-                        maxLength: 255
-                    }) }
-                />
-                <button type="submit"
-                    className="search__submit btn" >
+                <div className="search__group">
+                    <Icon type="search" />
+                    <input
+                        placeholder="Введите название города"
+                        type="text"
+                        className="input search__input"
+                        { ...register('city', {
+                            required: true,
+                            maxLength: 255
+                        }) }
+                    />
+                </div>
+                <button type="submit" className="search__submit btn">
                     Найти
                 </button>
-                <p className="search__error"></p>
                 {
                     errors.city && errors.city.type === "required"
                     && <p className="search__error">Введите город</p>
@@ -56,7 +64,13 @@ const Search: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className }) =
                     errors.city && errors.city.type === "maxLength"
                     && <p className="search__error">Слишком длинное название города</p>
                 }
+                {
+                    cityNotFound
+                    && <p className="search__error">Упс! Город не найден, попробуйте другой</p>
+                }
             </form>
+            <History />
+            { children }
         </aside>
     );
 };

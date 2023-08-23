@@ -2,12 +2,12 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mountTest, localStorageMock, mathcMediaMock } from '../../../tests';
 
-import ThemeSwitch from '../ThemeSwitch';
-import { ThemeContextProvider, type ThemeNameType } from '../context';
+import Switcher from '../Switcher';
+import { ThemeContextProvider } from '../context';
 
 const testId = 'switch';
 
-describe('ThemeSwitch', () => {
+describe('Switcher', () => {
 	beforeAll(() => {
 		Object.defineProperty(
 			window,
@@ -20,12 +20,12 @@ describe('ThemeSwitch', () => {
 		);
 	})
 
-	mountTest(ThemeSwitch);
+	mountTest(Switcher);
 
 	it('отрабатывает изменение темы', () => {
 		const { baseElement } = render(
 			<ThemeContextProvider>
-				<ThemeSwitch data-testid={ testId } />
+				<Switcher data-testid={ testId } />
 			</ThemeContextProvider>
 		);
 
@@ -49,7 +49,7 @@ describe('ThemeSwitch', () => {
 
 		const { baseElement } = render(
 			<ThemeContextProvider>
-				<ThemeSwitch />
+				<Switcher />
 			</ThemeContextProvider>
 		);
 
@@ -66,7 +66,7 @@ describe('ThemeSwitch', () => {
 
 		const { baseElement } = render(
 			<ThemeContextProvider>
-				<ThemeSwitch />
+				<Switcher />
 			</ThemeContextProvider>
 		);
 
