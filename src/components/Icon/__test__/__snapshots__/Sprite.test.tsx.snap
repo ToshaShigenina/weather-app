@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sprite снепшот компонента 1`] = `<div />`;
+exports[`Sprite спрайт добавляется в боди 1`] = `
+<body>
+  <div />
+  <div
+    data-testid="sprite"
+    hidden=""
+    id="sprite"
+  >
+    <svg>
+      sprite.svg
+    </svg>
+  </div>
+</body>
+`;

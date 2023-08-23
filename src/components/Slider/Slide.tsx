@@ -4,7 +4,7 @@ import { SliderContext, type SliderContextType } from './context';
 
 import './css/slide.css';
 
-const SliderItem: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = '', style = {}, ...otherProps }) => {
+const Slide: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = '', style = {}, ...otherProps }) => {
     const slideKey = Symbol();
     const [slideIndex, setSlideIndex] = useState(0);
     const sliderCtx = useContext<SliderContextType | null>(SliderContext);
@@ -34,4 +34,4 @@ const SliderItem: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, 
     );
 };
 
-export default SliderItem;
+export default Slide;

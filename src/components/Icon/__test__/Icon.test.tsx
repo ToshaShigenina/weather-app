@@ -4,9 +4,9 @@ import { mountTest } from '../../../tests';
 
 import Icon, { type IconProps } from '../Icon';
 
-describe('Icon', () => {
-	const testId = 'icon';
+const testId = 'icon';
 
+describe('Icon', () => {
 	mountTest<IconProps>(Icon, { type: 'point' } as IconProps);
 
 	it('установлены дефолтная ширина и высота', () => {

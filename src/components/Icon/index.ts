@@ -4,7 +4,7 @@ import { default as Sprite } from './Sprite';
 type InitialIconType = typeof InitialIcon;
 type CompaundComponentType = InitialIconType & {
 	Sprite: typeof Sprite
-}
+};
 
 const Icon = InitialIcon as CompaundComponentType;
 Icon.Sprite = Sprite;

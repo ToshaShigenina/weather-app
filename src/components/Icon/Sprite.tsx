@@ -11,7 +11,6 @@ portalNode.hidden = true;
 
 const Sprite: React.FC<React.SVGAttributes<SVGElement>> = (props) => {
 	React.useEffect(() => {
-		console.log(portalNode)
 		document.body.appendChild(portalNode);
 		return () => portalNode.remove();
 	});

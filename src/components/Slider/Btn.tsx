@@ -7,7 +7,7 @@ interface SliderBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     direction: SliderBtnDirectionType
 }
 
-const SliderBtn: React.FC<SliderBtnProps> = ({ direction = '', className, ...otherProps }) => {
+const Btn: React.FC<SliderBtnProps> = ({ direction = '', className, ...otherProps }) => {
     return (
         <button
             className={ cn(className, 'slider__btn', direction && `slider__btn-${direction}`) }
@@ -18,4 +18,4 @@ const SliderBtn: React.FC<SliderBtnProps> = ({ direction = '', className, ...oth
     );
 };
 
-export default SliderBtn;
+export default Btn;

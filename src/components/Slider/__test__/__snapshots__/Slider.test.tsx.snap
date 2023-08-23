@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider рендеринг пустого слайдера с дефолтными параметрами 1`] = `
+<div
+  class="slider"
+  data-testid="slider"
+>
+  <div
+    class="slider__wrapper"
+  >
+    <div
+      class="slider__container"
+      style="transform: translateX(0px);"
+    />
+  </div>
+  <button
+    class="slider__btn slider__btn-prev"
+    disabled=""
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+  <button
+    class="slider__btn slider__btn-next"
+    disabled=""
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Slider рендеринг слайдера с дефолтными параметрами 1`] = `
+<div
+  class="slider"
+  data-testid="slider"
+>
+  <div
+    class="slider__wrapper"
+  >
+    <div
+      class="slider__container"
+      style="transform: translateX(0px);"
+    >
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 1
+      </div>
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 2
+      </div>
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 3
+      </div>
+    </div>
+  </div>
+  <button
+    class="slider__btn slider__btn-prev"
+    disabled=""
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+  <button
+    class="slider__btn slider__btn-next"
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Slider рендеринг слайдера с отступами 1`] = `
+<div
+  class="slider"
+  data-testid="slider"
+>
+  <div
+    class="slider__wrapper"
+  >
+    <div
+      class="slider__container"
+      style="transform: translateX(0px);"
+    >
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 1
+      </div>
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 10px;"
+      >
+        Slide 2
+      </div>
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 10px;"
+      >
+        Slide 3
+      </div>
+    </div>
+  </div>
+  <button
+    class="slider__btn slider__btn-prev"
+    disabled=""
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+  <button
+    class="slider__btn slider__btn-next"
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Slider слайды переключаются правильно 1`] = `
+<div
+  class="slider"
+  data-testid="slider"
+>
+  <div
+    class="slider__wrapper"
+  >
+    <div
+      class="slider__container"
+      style="transform: translateX(0px);"
+    >
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 1
+      </div>
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 2
+      </div>
+    </div>
+  </div>
+  <button
+    class="slider__btn slider__btn-prev"
+    disabled=""
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+  <button
+    class="slider__btn slider__btn-next"
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Slider слайды переключаются правильно 2`] = `
+<div
+  class="slider"
+  data-testid="slider"
+>
+  <div
+    class="slider__wrapper"
+  >
+    <div
+      class="slider__container"
+      style="transform: translateX(0px);"
+    >
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 1
+      </div>
+      <div
+        class="slide"
+        data-testid="slide"
+        style="width: 100%; margin-left: 0px;"
+      >
+        Slide 2
+      </div>
+    </div>
+  </div>
+  <button
+    class="slider__btn slider__btn-prev"
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+  <button
+    class="slider__btn slider__btn-next"
+    disabled=""
+  >
+    <svg>
+      slider-arrow.svg
+    </svg>
+  </button>
+</div>
+`;

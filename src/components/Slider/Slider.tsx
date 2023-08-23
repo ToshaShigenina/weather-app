@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useResize } from '../../hooks';
-import SliderBtn from './SliderBtn';
+import Btn from './Btn';
 import { SliderContextProvider, type SliderContextType } from './context';
 
 import './css/slider.css';
@@ -44,7 +44,6 @@ const getBreackpointsMap = (breackpoints: Record<number, SliderBreackpointProps>
     }, {});
 };
 const Slider: React.FC<SliderProps> = ({ children = null, slidesPerView = 1, marginBetweenSlides = 0, breackpoints, ...otherProps }) => {
-    const sliderRef = useRef(null);
     const sliderWrapperRef = useRef(null);
     const { width: windowWidth } = useResize();
     const [currentSlide, setCurrentSlide] = useState(1);
@@ -106,7 +105,7 @@ const Slider: React.FC<SliderProps> = ({ children = null, slidesPerView = 1, mar
 
     return (
         <SliderContextProvider value={ context }>
-            <div className="slider" ref={ sliderRef } { ...otherProps }>
+            <div className="slider" { ...otherProps }>
                 <div className="slider__wrapper" ref={ sliderWrapperRef }>
                     <div
                         className="slider__container"
@@ -115,8 +114,16 @@ const Slider: React.FC<SliderProps> = ({ children = null, slidesPerView = 1, mar
                         { children }
                     </div>
                 </div>
-                <SliderBtn onClick={ clickToPrevBtn } direction="prev" />
-                <SliderBtn onClick={ clickToNextBtn } direction="next" />
+                <Btn
+                    onClick={ clickToPrevBtn }
+                    direction="prev"
+                    disabled={ currentSlide <= 1 }
+                />
+                <Btn
+                    onClick={ clickToNextBtn }
+                    direction="next"
+                    disabled={ currentSlide > countSlides - countSlidesPerView }
+                />
             </div>
         </SliderContextProvider>
     );

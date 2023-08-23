@@ -23,7 +23,6 @@ describe('ThemeSwitch', () => {
 	mountTest(ThemeSwitch);
 
 	it('отрабатывает изменение темы', () => {
-
 		const { baseElement } = render(
 			<ThemeContextProvider>
 				<ThemeSwitch data-testid={ testId } />

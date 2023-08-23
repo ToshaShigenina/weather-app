@@ -38,7 +38,7 @@ const Icon: React.FC<IconProps> = ({
     >
       <use xlinkHref={ `#${type}` } />
     </svg>
-  )
+  );
 };
 
 export default Icon;
