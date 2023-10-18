@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs компонент рендерится с двумя кнопками и контентом, активна первая кнопка и отображается первый контент 1`] = `
+<div
+  class="tabs"
+  data-testid="tabs"
+>
+  <ul
+    class="tabs__nav"
+  >
+    <li
+      class="tabs__nav-item active"
+    >
+      <button
+        class="tabs__nav-btn"
+      >
+        Item 1
+      </button>
+    </li>
+    <li
+      class="tabs__nav-item"
+    >
+      <button
+        class="tabs__nav-btn"
+      >
+        Item 2
+      </button>
+    </li>
+  </ul>
+  <div
+    class="tabs__content"
+  >
+    Children 1
+  </div>
+</div>
+`;
+
+exports[`Tabs компонент рендерится с двумя кнопками и контентом, при клике на кнопку происходит изменение контента 1`] = `
+<div
+  class="tabs"
+  data-testid="tabs"
+>
+  <ul
+    class="tabs__nav"
+  >
+    <li
+      class="tabs__nav-item active"
+    >
+      <button
+        class="tabs__nav-btn"
+      >
+        Item 1
+      </button>
+    </li>
+    <li
+      class="tabs__nav-item"
+    >
+      <button
+        class="tabs__nav-btn"
+      >
+        Item 2
+      </button>
+    </li>
+  </ul>
+  <div
+    class="tabs__content"
+  >
+    Children 1
+  </div>
+</div>
+`;
+
+exports[`Tabs компонент рендерится с двумя кнопками и контентом, при клике на кнопку происходит изменение контента 2`] = `
+<div
+  class="tabs"
+  data-testid="tabs"
+>
+  <ul
+    class="tabs__nav"
+  >
+    <li
+      class="tabs__nav-item"
+    >
+      <button
+        class="tabs__nav-btn"
+      >
+        Item 1
+      </button>
+    </li>
+    <li
+      class="tabs__nav-item active"
+    >
+      <button
+        class="tabs__nav-btn"
+      >
+        Item 2
+      </button>
+    </li>
+  </ul>
+  <div
+    class="tabs__content"
+  >
+    Children 2
+  </div>
+</div>
+`;

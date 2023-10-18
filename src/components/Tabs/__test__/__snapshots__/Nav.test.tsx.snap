@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav активная кнопка изменяется при клике 1`] = `
+<ul
+  class="tabs__nav"
+  data-testid="nav"
+>
+  <li
+    class="tabs__nav-item active"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 1
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 2
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`Nav активная кнопка изменяется при клике 2`] = `
+<ul
+  class="tabs__nav"
+  data-testid="nav"
+>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 1
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item active"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 2
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`Nav компонент рендерится с тремя кнопками, активна вторая 1`] = `
+<ul
+  class="tabs__nav"
+  data-testid="nav"
+>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 1
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item active"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 2
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 3
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`Nav компонент рендерится с тремя кнопками, активна первая 1`] = `
+<ul
+  class="tabs__nav"
+  data-testid="nav"
+>
+  <li
+    class="tabs__nav-item active"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 1
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 2
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 3
+    </button>
+  </li>
+</ul>
+`;
+
+exports[`Nav компонента рендерится с тремя кнопками, активна первая 1`] = `
+<ul
+  class="tabs__nav"
+  data-testid="nav"
+>
+  <li
+    class="tabs__nav-item active"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 1
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 2
+    </button>
+  </li>
+  <li
+    class="tabs__nav-item"
+  >
+    <button
+      class="tabs__nav-btn"
+    >
+      Item 3
+    </button>
+  </li>
+</ul>
+`;
