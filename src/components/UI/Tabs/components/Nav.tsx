@@ -7,7 +7,7 @@ export interface NavProps extends Omit<OlHTMLAttributes<HTMLUListElement>, 'chil
 	onClick?: (index: number) => void
 }
 
-export const Nav: FC<NavProps> = ({ active = 0, items = [], onClick }) => {
+export const Nav: FC<NavProps> = ({ active = 0, items = [], onClick, ...othrProps }) => {
 	const onClickHandler = (index: number) => {
 		if (onClick) {
 			onClick(index);
@@ -18,7 +18,7 @@ export const Nav: FC<NavProps> = ({ active = 0, items = [], onClick }) => {
 		<>
 			{
 				Boolean(items.length) &&
-				<ul className={ 'tabs-nav' }>
+				<ul className={ 'tabs-nav' } { ...othrProps }>
 					{
 						items.map((item, i) => {
 							return (

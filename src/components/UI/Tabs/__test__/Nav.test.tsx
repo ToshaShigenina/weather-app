@@ -16,7 +16,7 @@ describe('Nav', () => {
 		items.forEach((li, i) => {
 			if (i === 0) expect(li).toHaveClass('active');
 			else expect(li).not.toHaveClass('active');
-			expect(li).toHaveClass('tabs__nav-item');
+			expect(li).toHaveClass('tabs-nav__item');
 			expect(li.textContent).toContain(labels[i]);
 		});
 		expect(screen.getByTestId(testId)).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('Nav', () => {
 		items.forEach((li, i) => {
 			if (i === 1) expect(li).toHaveClass('active');
 			else expect(li).not.toHaveClass('active');
-			expect(li).toHaveClass('tabs__nav-item');
+			expect(li).toHaveClass('tabs-nav__item');
 			expect(li.textContent).toContain(labels[i]);
 		});
 		expect(screen.getByTestId(testId)).toMatchSnapshot();

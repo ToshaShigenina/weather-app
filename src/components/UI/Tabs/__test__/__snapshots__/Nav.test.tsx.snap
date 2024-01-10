@@ -2,23 +2,23 @@
 
 exports[`Nav активная кнопка изменяется при клике 1`] = `
 <ul
-  class="tabs__nav"
+  class="tabs-nav"
   data-testid="nav"
 >
   <li
-    class="tabs__nav-item active"
+    class="tabs-nav__item active"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 1
     </button>
   </li>
   <li
-    class="tabs__nav-item"
+    class="tabs-nav__item"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 2
     </button>
@@ -28,23 +28,23 @@ exports[`Nav активная кнопка изменяется при клик�
 
 exports[`Nav активная кнопка изменяется при клике 2`] = `
 <ul
-  class="tabs__nav"
+  class="tabs-nav"
   data-testid="nav"
 >
   <li
-    class="tabs__nav-item"
+    class="tabs-nav__item"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 1
     </button>
   </li>
   <li
-    class="tabs__nav-item active"
+    class="tabs-nav__item active"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 2
     </button>
@@ -54,32 +54,32 @@ exports[`Nav активная кнопка изменяется при клик�
 
 exports[`Nav компонент рендерится с тремя кнопками, активна вторая 1`] = `
 <ul
-  class="tabs__nav"
+  class="tabs-nav"
   data-testid="nav"
 >
   <li
-    class="tabs__nav-item"
+    class="tabs-nav__item"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 1
     </button>
   </li>
   <li
-    class="tabs__nav-item active"
+    class="tabs-nav__item active"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 2
     </button>
   </li>
   <li
-    class="tabs__nav-item"
+    class="tabs-nav__item"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 3
     </button>
@@ -89,67 +89,32 @@ exports[`Nav компонент рендерится с тремя кнопка�
 
 exports[`Nav компонент рендерится с тремя кнопками, активна первая 1`] = `
 <ul
-  class="tabs__nav"
+  class="tabs-nav"
   data-testid="nav"
 >
   <li
-    class="tabs__nav-item active"
+    class="tabs-nav__item active"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 1
     </button>
   </li>
   <li
-    class="tabs__nav-item"
+    class="tabs-nav__item"
   >
     <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 2
     </button>
   </li>
   <li
-    class="tabs__nav-item"
+    class="tabs-nav__item"
   >
     <button
-      class="tabs__nav-btn"
-    >
-      Item 3
-    </button>
-  </li>
-</ul>
-`;
-
-exports[`Nav компонента рендерится с тремя кнопками, активна первая 1`] = `
-<ul
-  class="tabs__nav"
-  data-testid="nav"
->
-  <li
-    class="tabs__nav-item active"
-  >
-    <button
-      class="tabs__nav-btn"
-    >
-      Item 1
-    </button>
-  </li>
-  <li
-    class="tabs__nav-item"
-  >
-    <button
-      class="tabs__nav-btn"
-    >
-      Item 2
-    </button>
-  </li>
-  <li
-    class="tabs__nav-item"
-  >
-    <button
-      class="tabs__nav-btn"
+      class="tabs-nav__btn"
     >
       Item 3
     </button>

@@ -15,7 +15,7 @@ type LabelsFunc = (items: TabItem[]) => string[];
 const getLabels: LabelsFunc = (items) => {
 	return items.map(item => item.label);
 };
-export const Tabs: FC<TabsProps> = ({ items = [] }) => {
+export const Tabs: FC<TabsProps> = ({ items = [], ...otherProps }) => {
 	const [active, setActive] = useState(0);
 
 	const changeActiveTab = (index: number) => {
@@ -25,7 +25,7 @@ export const Tabs: FC<TabsProps> = ({ items = [] }) => {
 	return (
 		<>
 			<Nav active={ active } items={ getLabels(items) } onClick={ changeActiveTab } />
-			<div className="tabs-content">
+			<div className="tabs-content" { ...otherProps }>
 				{ items[active].children }
 			</div>
 		</>
