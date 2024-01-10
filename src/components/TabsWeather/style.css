@@ -1,0 +1,43 @@
+.weather-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px 50px;
+	max-width: 250px;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+	.weather-tabs {
+		padding: 0 30px;
+	}
+}
+
+@media screen and (min-width: 912px) {
+	.weather-tabs {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 18px 24px;
+	}
+
+	.weather-tabs .heading,
+	.weather-tabs .tabs-nav {
+		width: fit-content;
+		margin-bottom: 0;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.weather-tabs {
+		max-width: 656px;
+		justify-content: flex-start;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.weather-tabs {
+		max-width: 780px;
+	}
+}

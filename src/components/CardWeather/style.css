@@ -1,0 +1,26 @@
+.card-weather {
+	padding-left: 0;
+	padding-right: 0;
+	min-width: 100px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.card-weather__icon {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: -8px auto 0;
+}
+
+.card-weather__temp {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0 16px;
+	margin-top: -12px;
+}
+
+.card-weather__temp span:not(:first-child) {
+	color: var(--color-main-light);
+}

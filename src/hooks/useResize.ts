@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-type windowSize = {
+type WindowSize = {
 	width: number
 	height: number
 }
 
-export const useResize = (): windowSize => {
-	const [size, setSize] = useState<windowSize>({
+export const useResize = (): WindowSize => {
+	const [size, setSize] = useState<WindowSize>({
 		width: window.innerWidth,
 		height: window.innerHeight,
 	});

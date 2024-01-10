@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { render } from '@testing-library/react';
 
-export function mountTest<T>(Component: React.ComponentType<T>, requiredType: T | null = null) {
+export function mountTest<T>(Component: ComponentType<T>, requiredType: T | null = null) {
 	describe('монтирование и удаление компонента', () => {
 		it('компонент монтируется и удаляется без ошибок', () => {
 			if (requiredType) {

@@ -1,0 +1,74 @@
+.tabs-nav {
+	display: flex;
+	justify-content: center;
+	gap: 0 50px;
+	list-style: none;
+	margin-bottom: 30px;
+}
+
+.tabs-nav__btn {
+	--color: var(--color-main-light);
+	--color-border: transparent;
+	display: block;
+	flex-shrink: 0;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	padding-bottom: 10px;
+	border-bottom: 4px solid var(--color-border);
+	color: var(--color);
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.tabs-nav__item.active .tabs-nav__btn {
+	--color: var(--color-main-dark);
+	--color-border: var(--color-main-dark);
+	cursor: default;
+}
+
+@media screen and (min-width: 768px) {
+	.tabs-content {
+		max-width: 224px;
+		margin: 0 auto;
+	}
+
+	.tabs-content .slider__btn-prev {
+		left: -52px;
+	}
+
+	.tabs-content .slider__btn-next {
+		right: -52px;
+	}
+}
+
+@media screen and (min-width: 912px) {
+	.tabs-content {
+		max-width: 348px;
+	}
+
+	.tabs-nav {
+		gap: 0 16px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.tabs-content {
+		max-width: 472px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.tabs-content {
+		max-width: 596px;
+	}
+}
+
+@media screen and (min-width: 1360px) {
+	.tabs-content {
+		max-width: 720px;
+	}
+}

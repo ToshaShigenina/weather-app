@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History история загружается из LS 1`] = `
+<ul
+  class="history"
+  data-testid="history"
+>
+  <li
+    class="history__item"
+  >
+    Item 1
+  </li>
+  <li
+    class="history__item"
+  >
+    Item 2
+  </li>
+  <li
+    class="history__item"
+  >
+    Item 3
+  </li>
+</ul>
+`;
+
+exports[`History рендерится пустой компонент, в LS устанавливается значение 1`] = `
+<body>
+  <div />
+</body>
+`;

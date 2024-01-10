@@ -1,0 +1,32 @@
+.history {
+	margin-top: 30px;
+	list-style: none;
+}
+
+.history__item {
+	position: relative;
+	padding: 22px 24px;
+	padding-right: 50px;
+	font-weight: 700;
+	font-size: 18px;
+	border-radius: 10px;
+	cursor: pointer;
+	word-break: break-all;
+	transition: background-color 0.5s;
+}
+
+.history__item:hover {
+	background-color: var(--color-switch);
+}
+
+.history__item:hover::after {
+	opacity: 1;
+}
+
+.history__item + .history__item {
+	margin-top: 10px;
+}
+
+.theme-dark .history__item:hover {
+	background-color: var(--color-main-bg);
+}

@@ -1,22 +1,20 @@
 const createQuery = (params: Record<string, unknown>) => {
-  const result = [];
   if (
     params &&
     typeof params === 'object' &&
     params instanceof Object &&
     params.constructor === Object
   ) {
-    for (let key in params) {
-      if (typeof params[key] !== 'object') result.push(`${key}=${params[key]}`);
-    }
-    return `?${result.join('&')}`;
+    const tempParams = Object.entries(params)
+      .reduce((result, [key, value]) => {
+        return { ...result, [key]: String(value) };
+      }, {});
+    return `?${new URLSearchParams(tempParams).toString()}`;
   }
   return '';
 };
 
-const sendGet = (url: string, params: Record<string, unknown>) => {
+export const sendGet = async (url: string, params: Record<string, unknown>) => {
   return fetch(`${url}${createQuery(params)}`)
     .then(response => response.json())
 }
-
-export default sendGet

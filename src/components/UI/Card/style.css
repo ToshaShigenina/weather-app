@@ -1,0 +1,12 @@
+.card {
+	--color-bg: var(--color-white);
+	padding: 16px 10px;
+	border-radius: 8px;
+	background-color: var(--color-bg);
+	box-shadow: var(--shadow);
+}
+
+.card-extra {
+	padding: 20px 24px;
+	border-radius: 10px;
+}
